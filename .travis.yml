@@ -1,4 +1,7 @@
 language: r
+r:
+  - devel
+  - bioc-devel
 cache: packages
 sudo: true
 r_packages:
@@ -6,7 +9,7 @@ r_packages:
   - devtools
 before_install:
   - Rscript -e 'install.packages("BiocManager")'
-  - Rscript -e 'BiocManager::install("BEclear", version = "3.8")'
+  - Rscript -e 'BiocManager::install("BEclear", version = "3.9")'
 after_success:
   - Rscript -e 'library(covr);codecov()'
 
