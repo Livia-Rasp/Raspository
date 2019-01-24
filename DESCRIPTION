@@ -9,6 +9,6 @@ Authors@R:
 Description: A collection of random tools written in R 
 License: GPL-3
 Encoding: UTF-8
-Imports: Rdpack, BEclear, stats
+Imports: Rdpack, BEclear, futile.logger, stats
 RdMacros: Rdpack
 RoxygenNote: 6.1.1
