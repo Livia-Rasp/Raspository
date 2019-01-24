@@ -35,7 +35,7 @@ imputeALS<- function(data, lambda = 0.75, r = 10, iters = 80){
     L <- matrix(rnorm(nrow(data) * r), nrow(data), r) / sqrt(r)
     R <- matrix(rnorm(r * ncol(data)), r, ncol(data)) / sqrt(r)
 
-    currLoss <- loss(L,R, 1, data)$loss
+    currLoss <- BEclear:::loss(L,R, 1, data)$loss
     flog.info(paste("Loss for random L and R:", currLoss))
 
     for(iter in 1:iters){
@@ -61,7 +61,7 @@ imputeALS<- function(data, lambda = 0.75, r = 10, iters = 80){
             # We solve the linear equation for the sample
             R[,j] <- as.vector(solve(t(x) %*% x + diag(lambda, r), t(x) %*% y))
         }
-        currLoss <- loss(L,R, 1, data)$loss
+        currLoss <- BEclear:::loss(L,R, 1, data)$loss
 
         flog.info(paste0("Loss for iteration ", iter, ": ", currLoss))
     }
