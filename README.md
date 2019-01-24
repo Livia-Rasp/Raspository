@@ -2,7 +2,7 @@
 [![Coverage Status](https://img.shields.io/codecov/c/github/David-J-R/Raspository/master.svg)](https://codecov.io/github/David-J-R/Raspository?branch=master)
 
 
-# Raspoistory
+# Raspository
 
 ## Description
 
