@@ -8,7 +8,7 @@
 #'
 #' @return
 #' @export imputeALS
-#' @importFrom BEclear loss
+#' @import BEclear
 #' @importFrom stats rnorm
 #' @import futile.logger
 #'

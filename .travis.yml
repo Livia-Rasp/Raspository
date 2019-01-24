@@ -4,8 +4,9 @@ sudo: true
 r_packages:
   - covr
   - devtools
-after_success:
-  - Rscript -e 'library(covr);codecov()'
 before_install:
   - Rscript -e 'install.packages("BiocManager")'
-  - Rscript -e 'BiocManager::install("BEclear", version = "3.9")'
+  - Rscript -e 'BiocManager::install("BEclear", version = "3.8")'
+after_success:
+  - Rscript -e 'library(covr);codecov()'
+
