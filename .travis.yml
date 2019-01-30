@@ -1,7 +1,6 @@
 language: r
 r:
-  - devel
-  - bioc-devel
+ - bioc-devel
 cache: packages
 sudo: true
 r_packages:

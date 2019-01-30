@@ -30,13 +30,29 @@
 #'
 #' result <- imputeALS(cleared.data)
 #'
-imputeALS<- function(data, lambda = 0.75, r = 10, iters = 80){
+imputeALS<- function(data, lambda = 0.75, r = 5, iters = 60, use.biases=FALSE){
+
+    # copy the data
+    D <- data
+
     # We initialise L and R with random values
     L <- matrix(rnorm(nrow(data) * r), nrow(data), r) / sqrt(r)
     R <- matrix(rnorm(r * ncol(data)), r, ncol(data)) / sqrt(r)
 
-    currLoss <- loss(L,R, 1, data)$loss
+    currLoss <- loss(L,R, 1, D)$loss
     flog.info(paste("Loss for random L and R:", currLoss))
+
+    if(use.biases){
+        # we calculate the biases
+        biasData<-mean(data, na.rm = TRUE)
+        biasRows<-rowMeans(data - biasData, na.rm= TRUE)
+        biasCols<-colMeans(data - biasData, na.rm= TRUE)
+
+        # subtract the biases from the data
+        D <- D - biasData - biasRows
+        D <- t(t(D) - biasCols)
+    }
+
 
     for(iter in 1:iters){
 
@@ -44,8 +60,8 @@ imputeALS<- function(data, lambda = 0.75, r = 10, iters = 80){
         for(i in 1:dim(L)[[1]]){
             # We determine the revealed entries for the feature
             # And subset the data and R so to only retain the revealed entries
-            revealedEntries <- !is.na(data[i,])
-            y <- as.matrix(data[i, revealedEntries])
+            revealedEntries <- !is.na(D[i,])
+            y <- as.matrix(D[i, revealedEntries])
             x <- R[,revealedEntries]
             # We solve the linear equation for the feature
             L[i,] <- as.vector(solve(x %*% t(x) + diag(lambda, r), x %*% y))
@@ -55,19 +71,25 @@ imputeALS<- function(data, lambda = 0.75, r = 10, iters = 80){
         for(j in 1:dim(R)[[2]]){
             # We determine the revealed entries for the sample
             # And subset the data and L so to only retain the revealed entries
-            revealedEntries <- !is.na(data[,j])
-            y <- as.matrix(data[revealedEntries, j])
+            revealedEntries <- !is.na(D[,j])
+            y <- as.matrix(D[revealedEntries, j])
             x <- L[revealedEntries,]
             # We solve the linear equation for the sample
             R[,j] <- as.vector(solve(t(x) %*% x + diag(lambda, r), t(x) %*% y))
         }
-        currLoss <- loss(L,R, 1, data)$loss
+        currLoss <- loss(L,R, 1, D)$loss
 
         flog.info(paste0("Loss for iteration ", iter, ": ", currLoss))
     }
 
     # L and R are multiplied to get the estimated values
     D <- L %*% R
+
+    if(use.biases){
+        # we add the biases again
+        D <- t(t(D) + biasCols)
+        D <- D + biasData + biasRows
+    }
 
     # Missing values are replaced with estimated value
 
