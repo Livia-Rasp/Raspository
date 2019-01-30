@@ -14,6 +14,8 @@ imputeALS(data, lambda, r, iters, use.biases)
 \item{r}{number of coefficients per sample and feature}
 
 \item{iters}{the number of iterations the ALS should be executed}
+
+\item{use.biases}{TRUE if the bias model should be used}
 }
 \value{
 a matrix containing the original values with missing values replaced

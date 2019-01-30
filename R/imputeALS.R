@@ -4,6 +4,7 @@
 #' @param lambda the learning rate
 #' @param r number of coefficients per sample and feature
 #' @param iters the number of iterations the ALS should be executed
+#' @param use.biases TRUE if the bias model should be used
 #'
 #' @usage
 #' imputeALS(data, lambda, r, iters, use.biases)
