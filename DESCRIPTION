@@ -6,7 +6,7 @@ Authors@R:
            family = "Rasp",
            role = c("aut", "cre"),
            email = "David.J.Rasp@gmail.com")
-Description: A collection of random tools written in R 
+Description: A collection of random tools written in R.
 License: GPL-3
 Encoding: UTF-8
 Imports: Rdpack, BEclear (>= 1.15.6), futile.logger, stats

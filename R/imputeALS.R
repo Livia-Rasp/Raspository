@@ -1,12 +1,15 @@
 #' imputeALS
 #'
-#' @param data
-#' @param lambda
-#' @param gamma
-#' @param r
-#' @param iters
+#' @param data a matrix containing missing values that should be imputed
+#' @param lambda the learning rate
+#' @param r number of coefficients per sample and feature
+#' @param iters the number of iterations the ALS should be executed
 #'
-#' @return
+#' @usage
+#' imputeALS(data, lambda, r, iters, use.biases)
+#'
+#' @return a matrix containing the original values with missing values replaced
+#' by imputed values
 #' @export imputeALS
 #' @importFrom BEclear loss
 #' @importFrom stats rnorm

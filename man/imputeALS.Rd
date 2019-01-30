@@ -4,10 +4,20 @@
 \alias{imputeALS}
 \title{imputeALS}
 \usage{
-imputeALS(data, lambda = 0.75, r = 10, iters = 80)
+imputeALS(data, lambda, r, iters, use.biases)
 }
 \arguments{
-\item{iters}{}
+\item{data}{a matrix containing missing values that should be imputed}
+
+\item{lambda}{the learning rate}
+
+\item{r}{number of coefficients per sample and feature}
+
+\item{iters}{the number of iterations the ALS should be executed}
+}
+\value{
+a matrix containing the original values with missing values replaced
+by imputed values
 }
 \description{
 imputeALS
