@@ -1,4 +1,15 @@
-library(dequer)
+#' Title
+#'
+#' @param graph
+#' @param v
+#' @param retentionCoefficient
+#' @param tol
+#'
+#' @return
+#' @export
+#' @import dequer
+#'
+#' @examples
 BCA<- function(graph, v, retentionCoefficient = 0.4, tol = 0.001){
     p<-c()
     p[V(graph)] <- 0

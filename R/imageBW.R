@@ -1,7 +1,15 @@
 imageBW <- setClass("imageBW", slots=list(original="matrix", current="matrix", operations="list"))
 
+#' Title
+#'
+#' @param pathToJpeg
+#'
+#' @return
+#' @export
+#' @importFrom jpeg readJPEG
+#'
+#' @examples
 imageBWFromJpeg <-function(pathToJpeg){
-    require(jpeg)
     image<- readJPEG(pathToJpeg)
     imageBW <- image[,,1]
     return(new("imageBW", original = imageBW, current = imageBW, operations = list()))
