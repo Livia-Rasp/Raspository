@@ -138,25 +138,3 @@ performInsulatedHeatDiffusion <- function(adjacencyMatrix, restartProbability){
 normaliseAdjacencyMatrix <- function(adjacencyMatrix){
     return(adjacencyMatrix %*% diag(1/colSums(adjacencyMatrix)))
 }
-
-
-# library(RobustRankAggreg)
-# library(data.table)
-#
-# mutationData <-fread("https://raw.githubusercontent.com/cbg-ethz/netics/master/data/mutation_data_breast.txt", col.names = c("Gene", "Sample"), header = FALSE)
-# networkGenes<-fread("~/Data/NetICS/network_genes.txt", header = FALSE, col.names = "Gene")
-#
-# rnaDiffExp<-fread("~/Data/NetICS/RNA_diff_expr_breast.txt", header = FALSE, col.names = c("Gene", "pval"))
-# rppa<-fread("~/Data/NetICS/protein_diff_expr_breast.txt", header = FALSE, col.names = c("Gene", "pval"))
-#
-# diffExp <- combineDifferentialExpressions(rnaDiffExp, rppa)
-# diffExp[, p.adjusted:=p.adjust(pval, method = "fdr")]
-#
-#
-# tmp<-R.matlab::readMat("~/Data/NetICS/adj_lar_com.mat")
-# adjacencyMatrix<-tmp$adj.lar.com
-# rm(tmp)
-#
-# result<-netICS(adjacencyMatrix = adjacencyMatrix, networkGenes,
-#                mutationData = mutationData, diffExpGenes = diffExp[p.adjusted < 0.05, .(Gene)])
-# result[order(sum)]
