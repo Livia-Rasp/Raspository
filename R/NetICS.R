@@ -25,11 +25,19 @@ netICS <- function(adjacencyMatrix, networkGenes, mutationData, diffExpGenes,
     connectivityBackward <- performInsulatedHeatDiffusion(normaliseAdjacencyMatrix(t(adjacencyMatrix)), restartProbability)
 
     # ranking mediator genes
-    result<-prioritize(connectivity, connectivityBackward, networkGenes, rankMethod,
+    result<-prioritize(connectivity, connectivityBackward, networkGenes,
                            mutationData, mutationInNetwork, diffExpInNetwork)
 
     return(result)
 
+}
+
+combineDifferentialExpressions<-function(diffExp1, diffExp2){
+    mergedDiff<-merge(diffExp1, diffExp2, by ="Gene", all=TRUE)
+    mergedDiff[is.na(pval.x) & !is.na(pval.y), pval := pval.y]
+    mergedDiff[!is.na(pval.x) & is.na(pval.y), pval := pval.x]
+    mergedDiff[!is.na(pval.x) & !is.na(pval.y), pval := pchisq(-2 * (log(pval.x) + log(pval.y)) , 4)]
+    return(mergedDiff[,.(Gene, pval)])
 }
 
 #' prioritize
@@ -52,11 +60,20 @@ netICS <- function(adjacencyMatrix, networkGenes, mutationData, diffExpGenes,
 prioritize<-function(connectivity, connectivityBackward, networkGenes,
                          mutationData, mutationInNetwork, diffExpInNetwork){
 
-    Ed<-diffuseSample(connectivityBackward, networkGenes, diffExpInNetwork)
+
+    if(!"Sample"  %in% colnames(diffExpInNetwork)){
+        Ed<-diffuseSample(connectivityBackward, networkGenes, diffExpInNetwork)
+    }
+
     scores <- data.table()
 
     for(sample in unique(mutationData$Sample)){
         Em<-diffuseSample(connectivity, networkGenes, mutationInNetwork[Sample == sample])
+
+        if("Sample"  %in% colnames(diffExpInNetwork)){
+            Ed<-diffuseSample(connectivityBackward, networkGenes, diffExpInNetwork[Sample == sample])
+        }
+
         E <- Em * Ed
         scores <- rbind(scores, data.table(Gene = networkGenes$Gene, Sample = sample, Score = E))
     }
@@ -126,10 +143,13 @@ normaliseAdjacencyMatrix <- function(adjacencyMatrix){
 # library(RobustRankAggreg)
 # library(data.table)
 #
-# mutationData <-fread("~/Data/NetICS/mutation_data_breast.txt", col.names = c("Gene", "Sample"), header = FALSE)
+# mutationData <-fread("https://raw.githubusercontent.com/cbg-ethz/netics/master/data/mutation_data_breast.txt", col.names = c("Gene", "Sample"), header = FALSE)
 # networkGenes<-fread("~/Data/NetICS/network_genes.txt", header = FALSE, col.names = "Gene")
 #
-# diffExp<-fread("~/Data/NetICS/RNA_diff_expr_breast.txt", header = FALSE, col.names = c("Gene", "pval"))
+# rnaDiffExp<-fread("~/Data/NetICS/RNA_diff_expr_breast.txt", header = FALSE, col.names = c("Gene", "pval"))
+# rppa<-fread("~/Data/NetICS/protein_diff_expr_breast.txt", header = FALSE, col.names = c("Gene", "pval"))
+#
+# diffExp <- combineDifferentialExpressions(rnaDiffExp, rppa)
 # diffExp[, p.adjusted:=p.adjust(pval, method = "fdr")]
 #
 #
