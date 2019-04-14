@@ -12,3 +12,14 @@ PSNR(object, other = NULL)
 \description{
 Title
 }
+\details{
+\deqn{PSNR(x, y) = 10 \cdot log_{10}  ( \frac{MAX^2}{MSE(x, y)} )}
+\deqn{PSNR(x, y) = 10 \cdot log_{10}(MAX^2) - 10 \cdot log_{10}(MSE(x, y))}
+\deqn{PSNR(x, y) = 20 \cdot log_{10}(MAX) - 10 \cdot log_{10}(MSE(x, y))}
+
+
+\deqn{PSNR(x, y) =  - 10 \cdot log_{10}(MSE(x, y))}
+}
+\references{
+insertRef{Weickert2019}{Raspository}
+}

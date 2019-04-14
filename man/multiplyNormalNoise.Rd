@@ -12,3 +12,6 @@ multiplyNormalNoise(object, sd = NULL)
 \description{
 Title
 }
+\references{
+insertRef{Weickert2019}{Raspository}
+}

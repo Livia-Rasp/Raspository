@@ -58,6 +58,8 @@ cropPixels<- function(object){
 #' @return
 #' @export
 #'
+#' @references insertRef{Weickert2019}{Raspository}
+#'
 #' @examples
 addUnifNoise <- function(object){
     slot(object, "current") <- slot(object, "current") +
@@ -72,6 +74,8 @@ addUnifNoise <- function(object){
 #'
 #' @return
 #' @export
+#'
+#' @references insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 addNormalNoise <- function(object, sd = NULL){
@@ -90,6 +94,8 @@ addNormalNoise <- function(object, sd = NULL){
 #' @return
 #' @export
 #'
+#' @references insertRef{Weickert2019}{Raspository}
+#'
 #' @examples
 multiplyUnifNoise <- function(object){
     object@current <- object@current * (1 + runif(length(object@current), min = -1, max = 1))
@@ -104,6 +110,8 @@ multiplyUnifNoise <- function(object){
 #' @return
 #' @export
 #'
+#' @references insertRef{Weickert2019}{Raspository}
+#'
 #' @examples
 multiplyNormalNoise <- function(object, sd = NULL){
     if(is.null(sd)){
@@ -116,6 +124,17 @@ multiplyNormalNoise <- function(object, sd = NULL){
     return(cropPixels(object))
 }
 
+#' Title
+#'
+#' @param object
+#' @param percentage
+#'
+#' @return
+#' @export
+#'
+#' @references insertRef{Weickert2019}{Raspository}
+#'
+#' @examples
 saltAndPepperNoise <- function(object, percentage = .2){
     # select the indices to set to 0 or 1 at random
     indices <- sample(length(object@current), length(object@current) * percentage)
@@ -126,6 +145,17 @@ saltAndPepperNoise <- function(object, percentage = .2){
     return(object)
 }
 
+#' Title
+#'
+#' @param object
+#' @param other
+#'
+#' @return
+#' @export
+#'
+#' @references insertRef{Weickert2019}{Raspository}
+#'
+#' @examples
 MSE <- function(object, other = NULL){
     if(is.null(other)){
         errorMatrix <- object@original - object@current
@@ -143,7 +173,7 @@ MSE <- function(object, other = NULL){
 #' \deqn{PSNR(x, y) = 10 \cdot log_{10}  ( \frac{MAX^2}{MSE(x, y)} )}
 #' \deqn{PSNR(x, y) = 10 \cdot log_{10}(MAX^2) - 10 \cdot log_{10}(MSE(x, y))}
 #' \deqn{PSNR(x, y) = 20 \cdot log_{10}(MAX) - 10 \cdot log_{10}(MSE(x, y))}
-#' }
+#'
 #'
 #' \deqn{PSNR(x, y) =  - 10 \cdot log_{10}(MSE(x, y))}
 #'
@@ -152,6 +182,8 @@ MSE <- function(object, other = NULL){
 #'
 #' @return
 #' @export
+#'
+#' @references insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 PSNR <- function(object, other = NULL){

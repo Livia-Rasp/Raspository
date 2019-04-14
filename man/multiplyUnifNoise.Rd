@@ -12,3 +12,6 @@ multiplyUnifNoise(object)
 \description{
 Title
 }
+\references{
+insertRef{Weickert2019}{Raspository}
+}
