@@ -8,6 +8,9 @@
 #' @return
 #' @export
 #' @import dequer
+#' @import igraph
+#'
+#'@references insertRef{Berkhin2006}{Raspository}
 #'
 #' @examples
 BCA<- function(graph, v, retentionCoefficient = 0.4, tol = 0.001){

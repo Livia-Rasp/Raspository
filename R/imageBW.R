@@ -17,6 +17,7 @@ imageBW <- setClass("imageBW", slots=list(original="matrix", current="matrix", o
 #' @return
 #' @export
 #' @importFrom jpeg readJPEG
+#' @importFrom methods new
 #'
 #' @examples
 imageBWFromJpeg <-function(pathToJpeg){
@@ -31,6 +32,9 @@ imageBWFromJpeg <-function(pathToJpeg){
 #'
 #' @return
 #' @export
+#' @importFrom grDevices as.raster
+#' @importFrom graphics plot
+#' @importFrom methods slot
 #'
 #' @examples
 plot.imageBW <- function(object){
@@ -43,6 +47,8 @@ plot.imageBW <- function(object){
 #'
 #' @return
 #' @export
+#' @importFrom methods slot
+#' @importFrom methods slot<-
 #'
 #' @examples
 cropPixels<- function(object){
@@ -57,6 +63,7 @@ cropPixels<- function(object){
 #'
 #' @return
 #' @export
+#' @importFrom stats runif
 #'
 #' @references insertRef{Weickert2019}{Raspository}
 #'
@@ -74,6 +81,8 @@ addUnifNoise <- function(object){
 #'
 #' @return
 #' @export
+#' @importFrom methods slot
+#' @importFrom methods slot<-
 #'
 #' @references insertRef{Weickert2019}{Raspository}
 #'
@@ -93,6 +102,9 @@ addNormalNoise <- function(object, sd = NULL){
 #'
 #' @return
 #' @export
+#' @importFrom stats runif
+#' @importFrom methods slot
+#' @importFrom methods slot<-
 #'
 #' @references insertRef{Weickert2019}{Raspository}
 #'
@@ -109,6 +121,9 @@ multiplyUnifNoise <- function(object){
 #'
 #' @return
 #' @export
+#' @importFrom stats rnorm
+#' @importFrom methods slot
+#' @importFrom methods slot<-
 #'
 #' @references insertRef{Weickert2019}{Raspository}
 #'
@@ -131,6 +146,9 @@ multiplyNormalNoise <- function(object, sd = NULL){
 #'
 #' @return
 #' @export
+#' @importFrom stats rbinom
+#' @importFrom methods slot
+#' @importFrom methods slot<-
 #'
 #' @references insertRef{Weickert2019}{Raspository}
 #'
@@ -152,6 +170,8 @@ saltAndPepperNoise <- function(object, percentage = .2){
 #'
 #' @return
 #' @export
+#' @importFrom methods slot
+#' @importFrom methods slot<-
 #'
 #' @references insertRef{Weickert2019}{Raspository}
 #'

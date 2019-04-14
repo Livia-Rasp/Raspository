@@ -12,3 +12,6 @@ BCA(graph, v, retentionCoefficient = 0.4, tol = 0.001)
 \description{
 Bookmark Coloring Algorithm
 }
+\references{
+insertRef{Berkhin2006}{Raspository}
+}

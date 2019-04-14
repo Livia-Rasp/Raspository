@@ -2,13 +2,16 @@ Package: Raspository
 Title: My Collection of Tools
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "David",
-           family = "Rasp",
-           role = c("aut", "cre"),
-           email = "David.J.Rasp@gmail.com")
-Description: A collection of random tools written in R.
-License: GPL-3
-Encoding: UTF-8
-Imports: Rdpack, BEclear, futile.logger, stats, dequer, jpeg, data.table, RobustRankAggreg
-RdMacros: Rdpack
+            person(given = "David",
+            family = "Rasp",
+            role = c("aut", "cre"),
+            email = "David.J.Rasp@gmail.com", 
+            comment = c(ORCID = "0000-0003-0164-2163"))
+Description: 
+            A collection of random tools written in R.
+License:    GPL-3
+Encoding:   UTF-8
+Imports:    Rdpack, BEclear, futile.logger, stats, dequer, jpeg, data.table, 
+            RobustRankAggreg, igraph, graphics, grDevices, stats, methods
+RdMacros:   Rdpack
 RoxygenNote: 6.1.1

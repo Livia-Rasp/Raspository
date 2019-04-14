@@ -32,6 +32,16 @@ netICS <- function(adjacencyMatrix, networkGenes, mutationData, diffExpGenes,
 
 }
 
+#' Title
+#'
+#' @param diffExp1
+#' @param diffExp2
+#'
+#' @return
+#' @export
+#' @importFrom stats pchisq
+#'
+#' @examples
 combineDifferentialExpressions<-function(diffExp1, diffExp2){
     mergedDiff<-merge(diffExp1, diffExp2, by ="Gene", all=TRUE)
     mergedDiff[is.na(pval.x) & !is.na(pval.y), pval := pval.y]
@@ -53,6 +63,7 @@ combineDifferentialExpressions<-function(diffExp1, diffExp2){
 #' @export prioritize
 #' @import data.table
 #' @importFrom RobustRankAggreg rhoScores
+#' @importFrom stats median
 #'
 #' @references insertRef{Dimitrakopoulos2018}{Raspository}
 #'
