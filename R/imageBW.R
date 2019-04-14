@@ -115,3 +115,46 @@ multiplyNormalNoise <- function(object, sd = NULL){
     }
     return(cropPixels(object))
 }
+
+saltAndPepperNoise <- function(object, percentage = .2){
+    # select the indices to set to 0 or 1 at random
+    indices <- sample(length(object@current), length(object@current) * percentage)
+    # draw zeros and ones from a binomial distribution
+    values <- rbinom(length(indices), 1, 0.5)
+
+    object@current[indices] <- values
+    return(object)
+}
+
+MSE <- function(object, other = NULL){
+    if(is.null(other)){
+        errorMatrix <- object@original - object@current
+    }else{
+        errorMatrix <- other@current - object@current
+    }
+    squaredErrorMatrix <- errorMatrix ^ 2
+    return(mean(squaredErrorMatrix))
+}
+
+#' Title
+#'
+#' @description
+#' @details
+#' \deqn{PSNR(x, y) = 10 \cdot log_{10}  ( \frac{MAX^2}{MSE(x, y)} )}
+#' \deqn{PSNR(x, y) = 10 \cdot log_{10}(MAX^2) - 10 \cdot log_{10}(MSE(x, y))}
+#' \deqn{PSNR(x, y) = 20 \cdot log_{10}(MAX) - 10 \cdot log_{10}(MSE(x, y))}
+#' }
+#'
+#' \deqn{PSNR(x, y) =  - 10 \cdot log_{10}(MSE(x, y))}
+#'
+#' @param object
+#' @param other
+#'
+#' @return
+#' @export
+#'
+#' @examples
+PSNR <- function(object, other = NULL){
+    mse <- MSE(object, other)
+    return(-10 * log(mse, base = 10))
+}

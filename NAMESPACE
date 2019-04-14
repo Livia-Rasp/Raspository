@@ -2,6 +2,7 @@
 
 S3method(plot,imageBW)
 export(BCA)
+export(PSNR)
 export(addNormalNoise)
 export(addUnifNoise)
 export(cropPixels)
