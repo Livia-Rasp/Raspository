@@ -1,4 +1,4 @@
-#' Title
+#' Bookmark Coloring Algorithm
 #'
 #' @param graph
 #' @param v

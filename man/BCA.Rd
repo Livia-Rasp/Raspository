@@ -2,7 +2,7 @@
 % Please edit documentation in R/BCA.R
 \name{BCA}
 \alias{BCA}
-\title{Title}
+\title{Bookmark Coloring Algorithm}
 \usage{
 BCA(graph, v, retentionCoefficient = 0.4, tol = 0.001)
 }
@@ -10,5 +10,5 @@ BCA(graph, v, retentionCoefficient = 0.4, tol = 0.001)
 \item{tol}{}
 }
 \description{
-Title
+Bookmark Coloring Algorithm
 }
