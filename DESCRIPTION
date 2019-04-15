@@ -1,6 +1,6 @@
 Package: Raspository
-Title: My Collection of Tools
-Version: 0.0.0.9000
+Title: My Collection of Tools and Algorithms Programmed In R.
+Version: 0.1.0
 Authors@R: 
             person(given = "David",
             family = "Rasp",
@@ -15,3 +15,5 @@ Imports:    Rdpack, BEclear, futile.logger, stats, dequer, jpeg, data.table,
             RobustRankAggreg, igraph, graphics, grDevices, stats, methods
 RdMacros:   Rdpack
 RoxygenNote: 6.1.1
+URL:        https://raspository.com/
+BugReports: https://github.com/David-J-R/Raspository/issues
