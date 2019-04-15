@@ -7,6 +7,7 @@
 ## Description
 
 A collection of my personal tools implemented in R in form of a package.
+Also visit the accompanying blog the [Raspository](https://raspository.com/)
 
 ## Installation
 
