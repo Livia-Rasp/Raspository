@@ -2,16 +2,34 @@
 % Please edit documentation in R/BCA.R
 \name{BCA}
 \alias{BCA}
+\alias{BookmarkColoringAlgorithm}
 \title{Bookmark Coloring Algorithm}
 \usage{
 BCA(graph, v, retentionCoefficient = 0.4, tol = 0.001)
 }
 \arguments{
-\item{tol}{}
+\item{graph}{an object of type \code{\link[igraph]{igraph}}.}
+
+\item{v}{a starting vertex from the above graph. Can be either its identifier
+or a igraph.vs object.}
+
+\item{retentionCoefficient}{the restart probability for each node.}
+
+\item{tol}{a tolerance treshold, indicating what the smalltest value of color
+is, that should propagate further}
+}
+\value{
+a preference/teleportation vector
 }
 \description{
-Bookmark Coloring Algorithm
+This function calculates a teleportation vector from a given
+starting node to other nodes in a given network.
+}
+\examples{
+library(igraph)
+g <- make_ring(5)
+preferenceVector <- BCA(g, 1)
 }
 \references{
-insertRef{Berkhin2006}{Raspository}
+\insertRef{Berkhin2006}{Raspository}
 }

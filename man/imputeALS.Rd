@@ -41,7 +41,7 @@ result <- imputeALS(cleared.data)
 
 }
 \references{
-insertRef{Koren2009}{Raspository}
+\insertRef{Koren2009}{Raspository}
 
-insertRef{Hastie2014}{Raspository}
+\insertRef{Hastie2014}{Raspository}
 }

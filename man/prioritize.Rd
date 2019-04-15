@@ -14,5 +14,5 @@ prioritize(connectivity, connectivityBackward, networkGenes, mutationData,
 prioritize
 }
 \references{
-insertRef{Dimitrakopoulos2018}{Raspository}
+\insertRef{Dimitrakopoulos2018}{Raspository}
 }

@@ -14,5 +14,5 @@ netICS(adjacencyMatrix, networkGenes, mutationData, diffExpGenes,
 netICS
 }
 \references{
-insertRef{Dimitrakopoulos2018}{Raspository}
+\insertRef{Dimitrakopoulos2018}{Raspository}
 }

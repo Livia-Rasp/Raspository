@@ -10,7 +10,7 @@
 #' @export netICS
 #' @import data.table
 #'
-#' @references insertRef{Dimitrakopoulos2018}{Raspository}
+#' @references \insertRef{Dimitrakopoulos2018}{Raspository}
 #'
 #' @examples
 netICS <- function(adjacencyMatrix, networkGenes, mutationData, diffExpGenes,
@@ -65,7 +65,7 @@ combineDifferentialExpressions<-function(diffExp1, diffExp2){
 #' @importFrom RobustRankAggreg rhoScores
 #' @importFrom stats median
 #'
-#' @references insertRef{Dimitrakopoulos2018}{Raspository}
+#' @references \insertRef{Dimitrakopoulos2018}{Raspository}
 #'
 #' @examples
 prioritize<-function(connectivity, connectivityBackward, networkGenes,
@@ -108,7 +108,9 @@ prioritize<-function(connectivity, connectivityBackward, networkGenes,
 #' @export diffuseSample
 #' @import data.table
 #'
-#' @references insertRef{Dimitrakopoulos2018}{Raspository}
+#' @references \insertRef{Dimitrakopoulos2018}{Raspository}
+#' @references \insertRef{Leiserson2015}{Raspository}
+#' @references \insertRef{Chung2007}{Raspository}
 #'
 #' @examples
 diffuseSample<-function(connectivity, networkGenes, S){
@@ -126,7 +128,7 @@ diffuseSample<-function(connectivity, networkGenes, S){
 #' @export performInsulatedHeatDiffusion
 #' @import data.table
 #'
-#' @references insertRef{Dimitrakopoulos2018}{Raspository}
+#' @references \insertRef{Dimitrakopoulos2018}{Raspository}
 #'
 #' @examples
 performInsulatedHeatDiffusion <- function(adjacencyMatrix, restartProbability){
@@ -143,7 +145,7 @@ performInsulatedHeatDiffusion <- function(adjacencyMatrix, restartProbability){
 #' @export normaliseAdjacencyMatrix
 #' @import data.table
 #'
-#' @references insertRef{Dimitrakopoulos2018}{Raspository}
+#' @references \insertRef{Dimitrakopoulos2018}{Raspository}
 #'
 #' @examples
 normaliseAdjacencyMatrix <- function(adjacencyMatrix){

@@ -13,5 +13,5 @@ saltAndPepperNoise(object, percentage = 0.2)
 Title
 }
 \references{
-insertRef{Weickert2019}{Raspository}
+\insertRef{Weickert2019}{Raspository}
 }

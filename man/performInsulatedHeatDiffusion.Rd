@@ -13,5 +13,5 @@ performInsulatedHeatDiffusion(adjacencyMatrix, restartProbability)
 performInsulatedHeatDiffusion
 }
 \references{
-insertRef{Dimitrakopoulos2018}{Raspository}
+\insertRef{Dimitrakopoulos2018}{Raspository}
 }

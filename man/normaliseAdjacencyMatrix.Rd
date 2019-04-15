@@ -13,5 +13,5 @@ normaliseAdjacencyMatrix(adjacencyMatrix)
 normaliseAdjacencyMatrix
 }
 \references{
-insertRef{Dimitrakopoulos2018}{Raspository}
+\insertRef{Dimitrakopoulos2018}{Raspository}
 }

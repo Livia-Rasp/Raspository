@@ -16,8 +16,8 @@
 #' @importFrom stats rnorm
 #' @import futile.logger
 #'
-#' @references insertRef{Koren2009}{Raspository}
-#' @references insertRef{Hastie2014}{Raspository}
+#' @references \insertRef{Koren2009}{Raspository}
+#' @references \insertRef{Hastie2014}{Raspository}
 #'
 #' @examples
 #' library(BEclear)

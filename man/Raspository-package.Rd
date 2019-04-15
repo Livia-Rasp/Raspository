@@ -4,9 +4,9 @@
 \name{Raspository-package}
 \alias{Raspository}
 \alias{Raspository-package}
-\title{Raspository-package}
+\title{The Raspository}
 \description{
-A collection of random tools written in R.
+Raspository-package
 }
 \author{
 \strong{Maintainer}: David Rasp \email{David.J.Rasp@gmail.com} (0000-0003-0164-2163)

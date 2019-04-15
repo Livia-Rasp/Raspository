@@ -13,5 +13,9 @@ diffuseSample(connectivity, networkGenes, S)
 diffuseSample
 }
 \references{
-insertRef{Dimitrakopoulos2018}{Raspository}
+\insertRef{Dimitrakopoulos2018}{Raspository}
+
+\insertRef{Leiserson2015}{Raspository}
+
+\insertRef{Chung2007}{Raspository}
 }

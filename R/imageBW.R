@@ -65,7 +65,7 @@ cropPixels<- function(object){
 #' @export
 #' @importFrom stats runif
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 addUnifNoise <- function(object){
@@ -84,7 +84,7 @@ addUnifNoise <- function(object){
 #' @importFrom methods slot
 #' @importFrom methods slot<-
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 addNormalNoise <- function(object, sd = NULL){
@@ -106,7 +106,7 @@ addNormalNoise <- function(object, sd = NULL){
 #' @importFrom methods slot
 #' @importFrom methods slot<-
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 multiplyUnifNoise <- function(object){
@@ -125,7 +125,7 @@ multiplyUnifNoise <- function(object){
 #' @importFrom methods slot
 #' @importFrom methods slot<-
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 multiplyNormalNoise <- function(object, sd = NULL){
@@ -150,7 +150,7 @@ multiplyNormalNoise <- function(object, sd = NULL){
 #' @importFrom methods slot
 #' @importFrom methods slot<-
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 saltAndPepperNoise <- function(object, percentage = .2){
@@ -173,7 +173,7 @@ saltAndPepperNoise <- function(object, percentage = .2){
 #' @importFrom methods slot
 #' @importFrom methods slot<-
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 MSE <- function(object, other = NULL){
@@ -203,7 +203,7 @@ MSE <- function(object, other = NULL){
 #' @return
 #' @export
 #'
-#' @references insertRef{Weickert2019}{Raspository}
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 PSNR <- function(object, other = NULL){

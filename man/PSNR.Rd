@@ -21,5 +21,5 @@ Title
 \deqn{PSNR(x, y) =  - 10 \cdot log_{10}(MSE(x, y))}
 }
 \references{
-insertRef{Weickert2019}{Raspository}
+\insertRef{Weickert2019}{Raspository}
 }
