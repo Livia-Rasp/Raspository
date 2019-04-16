@@ -8,6 +8,14 @@
 \description{
 Raspository-package
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://raspository.com/}
+  \item Report bugs at \url{https://github.com/David-J-R/Raspository/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: David Rasp \email{David.J.Rasp@gmail.com} (0000-0003-0164-2163)
 

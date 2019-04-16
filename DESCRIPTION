@@ -12,7 +12,7 @@ Description:
 License:    GPL-3
 Encoding:   UTF-8
 Imports:    Rdpack, BEclear, futile.logger, stats, dequer, jpeg, data.table, 
-            RobustRankAggreg, igraph, graphics, grDevices, stats, methods
+            RobustRankAggreg, igraph, graphics, grDevices, stats, methods, abind
 RdMacros:   Rdpack
 RoxygenNote: 6.1.1
 URL:        https://raspository.com/
