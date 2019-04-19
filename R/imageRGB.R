@@ -16,10 +16,10 @@ imageRGB <- setClass("imageRGB", slots=list(original="array", current="array", o
 #'
 #' @return
 #' @export
+#' @importFrom jpeg readJPEG
 #'
 #' @examples
 imageRGBFromJpeg <-function(pathToJpeg){
-    require(jpeg)
     image<- readJPEG(pathToJpeg)
     return(new("imageRGB", original = image, current = image, operations = list()))
 }
@@ -34,4 +34,6 @@ imageRGBFromJpeg <-function(pathToJpeg){
 #' @examples
 plot.imageRGB <- function(object){
     plot(as.raster(object@current))}
+
+
 

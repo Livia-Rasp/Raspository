@@ -210,21 +210,3 @@ PSNR <- function(object, other = NULL){
     mse <- MSE(object, other)
     return(-10 * log(mse, base = 10))
 }
-
-#' Title
-#'
-#' @param img
-#' @param chPortion
-#'
-#' @return
-#' @export
-#'
-#' @examples
-imageBWFromRGB <- function(img, chPortion = c(0.33, 0.33, 0.33)){
-    if(sum(chPortion) > 1){
-        stop("Channel portions mustn't add up to more than one.")
-    }
-    original <- img@original[,,1] * chPortion[1] + img@original[,,2] * chPortion[2] + img@original[,,3] * chPortion[3]
-    current <- img@current[,,1] * chPortion[1] + img@current[,,2] * chPortion[2] + img@current[,,3] * chPortion[3]
-    return(new("imageBW", original = original, current = current, operations = operations))
-}
