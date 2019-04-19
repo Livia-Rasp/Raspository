@@ -33,7 +33,8 @@ imageRGBFromJpeg <-function(pathToJpeg){
 #'
 #' @examples
 plot.imageRGB <- function(object){
-    plot(as.raster(object@current))}
+    plot(as.raster(object@current), axes=FALSE, box=FALSE)
+}
 
 
 

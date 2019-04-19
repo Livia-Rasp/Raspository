@@ -12,3 +12,6 @@ calculateHUE(max, maxIndex, min, r, g, b)
 \description{
 Title
 }
+\references{
+\insertRef{Weickert2019}{Raspository}
+}

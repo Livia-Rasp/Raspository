@@ -103,6 +103,8 @@ imageBWFromRGB <- function(img, chPortion = c(0.33, 0.33, 0.33)){
 #' @return
 #' @export
 #'
+#' @references \insertRef{Weickert2019}{Raspository}
+#'
 #' @examples
 calculateHUE <- function(max, maxIndex, min, r, g, b){
     h <- 0.0
@@ -131,6 +133,8 @@ calculateHUE <- function(max, maxIndex, min, r, g, b){
 #' @return
 #' @export
 #' @importFrom abind abind
+#'
+#' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
 rgbArrayToHsv <- function(rgbArray){
@@ -165,9 +169,120 @@ rgbArrayToHsv <- function(rgbArray){
 #' @return
 #' @export
 #'
+#' @references \insertRef{Weickert2019}{Raspository}
+#'
 #' @examples
 imageHSVFromRGB <- function(img){
     return(new("imageHSV", original = rgbArrayToHsv(img@original),
                current = rgbArrayToHsv(img@current),
                operations = img@operations))
+}
+
+
+#' Title
+#'
+#' @param img
+#' @param transformPaletteFunction
+#' @param method
+#'
+#' @return
+#' @export
+#'
+#' @references \insertRef{Floyd}{Raspository}
+#' @references \insertRef{Jarvis1976}{Raspository}
+#'
+#' @examples
+errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
+                                     method = c("FS", "mae")){
+    pixel <- img@current
+
+    n <- dim(pixel)[1]
+    m <- dim(pixel)[2]
+
+    for(y in seq(m)){
+        for(x in seq(n)){
+
+            oldPixel <- pixel[x,y]
+            newPixel <- transformPaletteFunction(oldPixel)
+
+            error <- oldPixel - newPixel
+
+            pixel[x,y] <- newPixel
+
+            if(method[1] == "FS"){
+                if(x < n){
+                    pixel[x + 1, y] <- pixel[x + 1, y] + error * 7/16
+                }
+
+                if(x > 1 && y < m){
+                    pixel[x - 1, y + 1] <- pixel[x - 1, y + 1] + error * 3/16
+                }
+
+                if(y < m){
+                    pixel[x, y + 1] <- pixel[x, y + 1] + error * 5/16
+                }
+
+                if(x < n && y < m){
+                    pixel[x + 1, y + 1] <- pixel[x + 1, y + 1] + error * 1/16
+                }
+            }else if(method[1] == "mea"){
+                if(x < n){
+                    pixel[x + 1, y    ] <- pixel[x + 1, y    ] + error * 7/48
+                }
+                if(x < n - 1){
+                    pixel[x + 2, y    ] <- pixel[x + 2, y    ] + error * 5/48
+                }
+
+                if(x > 2 && y < m){
+                    pixel[x - 2, y + 1] <- pixel[x - 2, y + 1] + error * 3/48
+                }
+
+                if(x > 1 && y < m){
+                    pixel[x - 1, y + 1] <- pixel[x - 1, y + 1] + error * 5/48
+                }
+
+                if(y < m){
+                    pixel[x    , y + 1] <- pixel[x    , y + 1] + error * 7/48
+                }
+
+
+                if(x < n && y < m){
+                    pixel[x + 1, y + 1] <- pixel[x + 1, y + 1] + error * 5/48
+                }
+
+                if(x < n - 1 && y < m){
+                    pixel[x + 2, y + 1] <- pixel[x + 2, y + 1] + error * 3/48
+                }
+
+               if(x > 2 && y < m - 1){
+                    pixel[x - 2, y + 2] <- pixel[x - 2, y + 2] + error * 1/48
+                }
+
+                if(x > 1 && y < m - 1){
+                    pixel[x - 1, y + 2] <- pixel[x - 1, y + 2] + error * 3/48
+                }
+
+                if(y < m - 1){
+                    pixel[x    , y + 2] <- pixel[x    , y + 2] + error * 5/48
+                }
+
+
+                if(x < n && y < m - 1){
+                    pixel[x + 1, y + 2] <- pixel[x + 1, y + 2] + error * 3/48
+                }
+
+                if(x < n - 1 && y < m - 1){
+                    pixel[x + 2, y + 2] <- pixel[x + 2, y + 2] + error * 1/48
+                }
+
+            }
+
+
+        }
+    }
+
+    ditheredImage <- new(class(img)[[1]], original = img@original,
+                         current = pixel, operations = img@operations)
+
+    return(cropPixels(ditheredImage))
 }

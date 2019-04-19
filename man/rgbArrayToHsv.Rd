@@ -12,3 +12,6 @@ rgbArrayToHsv(rgbArray)
 \description{
 Title
 }
+\references{
+\insertRef{Weickert2019}{Raspository}
+}

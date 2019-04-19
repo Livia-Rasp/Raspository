@@ -38,7 +38,7 @@ imageBWFromJpeg <-function(pathToJpeg){
 #'
 #' @examples
 plot.imageBW <- function(object){
-    plot(as.raster(object@current))
+    plot(as.raster(object@current), axes=FALSE, box=FALSE)
 }
 
 #' Title
