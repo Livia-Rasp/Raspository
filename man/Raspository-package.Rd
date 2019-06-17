@@ -17,6 +17,5 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: David Rasp \email{David.J.Rasp@gmail.com} (0000-0003-0164-2163)
-
+David Rasp
 }

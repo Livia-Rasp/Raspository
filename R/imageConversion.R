@@ -286,3 +286,34 @@ errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
 
     return(cropPixels(ditheredImage))
 }
+
+
+#' Lattice Blotzman Dithering
+#'
+#' @param img 
+#' @param epsilon 
+#' @param minimalTreshold 
+#'
+#' @return
+#' @export
+#' 
+#' @references \insertRef{Hagenburg2009}{Raspository}
+#'
+#' @examples
+lbDithering <- function(img, epsilon = 0.5, minimalTreshold = 0.01){
+    
+    i <- 0
+    difference <-epsilon + 1
+    while(difference > epsilon){
+        imgAtNewStep <- dissipatePixel(img = img, minimalTreshold = minimalTreshold)
+        
+        difference <- norm(imgAtNewStep - img, type = "2")
+        print(difference)
+        
+        img <- imgAtNewStep
+
+        i <- i +1
+    }
+    
+    return(img)
+}
