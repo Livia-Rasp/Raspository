@@ -4,7 +4,7 @@
 \alias{meaDithering}
 \title{Dither the imge with minimized average error}
 \usage{
-meaDithering(imgOriginal, transformPaletteFunction)
+meaDithering(img, transformPaletteFunction)
 }
 \value{
 the image as matrix after dithering

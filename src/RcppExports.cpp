@@ -18,26 +18,26 @@ BEGIN_RCPP
 END_RCPP
 }
 // fsDithering
-SEXP fsDithering(const SEXP& imgOriginal, Function transformPaletteFunction);
-RcppExport SEXP _Raspository_fsDithering(SEXP imgOriginalSEXP, SEXP transformPaletteFunctionSEXP) {
+SEXP fsDithering(NumericMatrix img, Function transformPaletteFunction);
+RcppExport SEXP _Raspository_fsDithering(SEXP imgSEXP, SEXP transformPaletteFunctionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const SEXP& >::type imgOriginal(imgOriginalSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type img(imgSEXP);
     Rcpp::traits::input_parameter< Function >::type transformPaletteFunction(transformPaletteFunctionSEXP);
-    rcpp_result_gen = Rcpp::wrap(fsDithering(imgOriginal, transformPaletteFunction));
+    rcpp_result_gen = Rcpp::wrap(fsDithering(img, transformPaletteFunction));
     return rcpp_result_gen;
 END_RCPP
 }
 // meaDithering
-SEXP meaDithering(const SEXP& imgOriginal, Function transformPaletteFunction);
-RcppExport SEXP _Raspository_meaDithering(SEXP imgOriginalSEXP, SEXP transformPaletteFunctionSEXP) {
+SEXP meaDithering(NumericMatrix img, Function transformPaletteFunction);
+RcppExport SEXP _Raspository_meaDithering(SEXP imgSEXP, SEXP transformPaletteFunctionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const SEXP& >::type imgOriginal(imgOriginalSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type img(imgSEXP);
     Rcpp::traits::input_parameter< Function >::type transformPaletteFunction(transformPaletteFunctionSEXP);
-    rcpp_result_gen = Rcpp::wrap(meaDithering(imgOriginal, transformPaletteFunction));
+    rcpp_result_gen = Rcpp::wrap(meaDithering(img, transformPaletteFunction));
     return rcpp_result_gen;
 END_RCPP
 }

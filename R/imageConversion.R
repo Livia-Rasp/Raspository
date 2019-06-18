@@ -197,9 +197,9 @@ errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
     image <- img@current
     
     if(method[1] == "FS"){
-        image <- fsDithering(imgOriginal = image, transformPaletteFunction = transformPaletteFunction)
+        image <- fsDithering(img = image, transformPaletteFunction = transformPaletteFunction)
     }else if(method[1] == "mea"){
-        image <- meaDithering(imgOriginal = image, transformPaletteFunction = transformPaletteFunction)
+        image <- meaDithering(img = image, transformPaletteFunction = transformPaletteFunction)
     }
 
     ditheredImage <- new(class(img)[[1]], original = img@original,
@@ -229,12 +229,12 @@ lbDithering <- function(img, epsilon = 0.5, minimalTreshold = 0.01){
         imgAtNewStep <- dissipatePixel(img = img, minimalTreshold = minimalTreshold)
         
         difference <- norm(imgAtNewStep - img, type = "2")
-        print(difference)
+        #print(difference)
         
         img <- imgAtNewStep
 
         i <- i +1
     }
     
-    return(img)
+    return(round(img))
 }

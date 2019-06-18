@@ -4,7 +4,7 @@
 \alias{fsDithering}
 \title{Dither the imge with Floyd Steinberg}
 \usage{
-fsDithering(imgOriginal, transformPaletteFunction)
+fsDithering(img, transformPaletteFunction)
 }
 \value{
 the image as matrix after dithering

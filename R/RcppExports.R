@@ -25,8 +25,8 @@ dissipatePixel <- function(imgOriginal, minimalTreshold) {
 #' 
 #' @return the image as matrix after dithering
 #'
-fsDithering <- function(imgOriginal, transformPaletteFunction) {
-    .Call('_Raspository_fsDithering', PACKAGE = 'Raspository', imgOriginal, transformPaletteFunction)
+fsDithering <- function(img, transformPaletteFunction) {
+    .Call('_Raspository_fsDithering', PACKAGE = 'Raspository', img, transformPaletteFunction)
 }
 
 #' Dither the imge with minimized average error
@@ -39,7 +39,7 @@ fsDithering <- function(imgOriginal, transformPaletteFunction) {
 #' 
 #' @return the image as matrix after dithering
 #'
-meaDithering <- function(imgOriginal, transformPaletteFunction) {
-    .Call('_Raspository_meaDithering', PACKAGE = 'Raspository', imgOriginal, transformPaletteFunction)
+meaDithering <- function(img, transformPaletteFunction) {
+    .Call('_Raspository_meaDithering', PACKAGE = 'Raspository', img, transformPaletteFunction)
 }
 

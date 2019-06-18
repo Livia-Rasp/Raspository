@@ -12,8 +12,7 @@ using namespace Rcpp;
 //' @return the image as matrix after dithering
 //'
 // [[Rcpp::export]]
-SEXP meaDithering(const SEXP& imgOriginal, Function transformPaletteFunction) {
-    NumericMatrix img(imgOriginal);
+SEXP meaDithering(NumericMatrix img, Function transformPaletteFunction) {
     LogicalMatrix imgNew(img.nrow(), img.ncol());
     
     for(size_t i = 0; i < img.nrow(); i++){
@@ -30,7 +29,7 @@ SEXP meaDithering(const SEXP& imgOriginal, Function transformPaletteFunction) {
             if(i <img.nrow() - 1){
                img(i + 1, j    ) += error * 7.0;
             }
-            if(i<img.nrow() - 2){
+            if(i < img.nrow() - 2){
                img(i + 2, j    ) += error * 5.0;
             }
             
