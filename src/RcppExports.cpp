@@ -17,9 +17,35 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// fsDithering
+SEXP fsDithering(const SEXP& imgOriginal, Function transformPaletteFunction);
+RcppExport SEXP _Raspository_fsDithering(SEXP imgOriginalSEXP, SEXP transformPaletteFunctionSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const SEXP& >::type imgOriginal(imgOriginalSEXP);
+    Rcpp::traits::input_parameter< Function >::type transformPaletteFunction(transformPaletteFunctionSEXP);
+    rcpp_result_gen = Rcpp::wrap(fsDithering(imgOriginal, transformPaletteFunction));
+    return rcpp_result_gen;
+END_RCPP
+}
+// meaDithering
+SEXP meaDithering(const SEXP& imgOriginal, Function transformPaletteFunction);
+RcppExport SEXP _Raspository_meaDithering(SEXP imgOriginalSEXP, SEXP transformPaletteFunctionSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const SEXP& >::type imgOriginal(imgOriginalSEXP);
+    Rcpp::traits::input_parameter< Function >::type transformPaletteFunction(transformPaletteFunctionSEXP);
+    rcpp_result_gen = Rcpp::wrap(meaDithering(imgOriginal, transformPaletteFunction));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Raspository_dissipatePixel", (DL_FUNC) &_Raspository_dissipatePixel, 2},
+    {"_Raspository_fsDithering", (DL_FUNC) &_Raspository_fsDithering, 2},
+    {"_Raspository_meaDithering", (DL_FUNC) &_Raspository_meaDithering, 2},
     {NULL, NULL, 0}
 };
 

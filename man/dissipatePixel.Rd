@@ -15,4 +15,3 @@ Calculating the Dissipation of Pixels
 \references{
 \insertRef{Hagenburg2009}{Raspository}
 }
-\keyword{internal}

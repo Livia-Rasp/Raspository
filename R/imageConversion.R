@@ -194,95 +194,16 @@ imageHSVFromRGB <- function(img){
 #' @examples
 errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
                                      method = c("FS", "mae")){
-    pixel <- img@current
-
-    n <- dim(pixel)[1]
-    m <- dim(pixel)[2]
-
-    for(y in seq(m)){
-        for(x in seq(n)){
-
-            oldPixel <- pixel[x,y]
-            newPixel <- transformPaletteFunction(oldPixel)
-
-            error <- oldPixel - newPixel
-
-            pixel[x,y] <- newPixel
-
-            if(method[1] == "FS"){
-                if(x < n){
-                    pixel[x + 1, y] <- pixel[x + 1, y] + error * 7/16
-                }
-
-                if(x > 1 && y < m){
-                    pixel[x - 1, y + 1] <- pixel[x - 1, y + 1] + error * 3/16
-                }
-
-                if(y < m){
-                    pixel[x, y + 1] <- pixel[x, y + 1] + error * 5/16
-                }
-
-                if(x < n && y < m){
-                    pixel[x + 1, y + 1] <- pixel[x + 1, y + 1] + error * 1/16
-                }
-            }else if(method[1] == "mea"){
-                if(x < n){
-                    pixel[x + 1, y    ] <- pixel[x + 1, y    ] + error * 7/48
-                }
-                if(x < n - 1){
-                    pixel[x + 2, y    ] <- pixel[x + 2, y    ] + error * 5/48
-                }
-
-                if(x > 2 && y < m){
-                    pixel[x - 2, y + 1] <- pixel[x - 2, y + 1] + error * 3/48
-                }
-
-                if(x > 1 && y < m){
-                    pixel[x - 1, y + 1] <- pixel[x - 1, y + 1] + error * 5/48
-                }
-
-                if(y < m){
-                    pixel[x    , y + 1] <- pixel[x    , y + 1] + error * 7/48
-                }
-
-
-                if(x < n && y < m){
-                    pixel[x + 1, y + 1] <- pixel[x + 1, y + 1] + error * 5/48
-                }
-
-                if(x < n - 1 && y < m){
-                    pixel[x + 2, y + 1] <- pixel[x + 2, y + 1] + error * 3/48
-                }
-
-               if(x > 2 && y < m - 1){
-                    pixel[x - 2, y + 2] <- pixel[x - 2, y + 2] + error * 1/48
-                }
-
-                if(x > 1 && y < m - 1){
-                    pixel[x - 1, y + 2] <- pixel[x - 1, y + 2] + error * 3/48
-                }
-
-                if(y < m - 1){
-                    pixel[x    , y + 2] <- pixel[x    , y + 2] + error * 5/48
-                }
-
-
-                if(x < n && y < m - 1){
-                    pixel[x + 1, y + 2] <- pixel[x + 1, y + 2] + error * 3/48
-                }
-
-                if(x < n - 1 && y < m - 1){
-                    pixel[x + 2, y + 2] <- pixel[x + 2, y + 2] + error * 1/48
-                }
-
-            }
-
-
-        }
+    image <- img@current
+    
+    if(method[1] == "FS"){
+        image <- fsDithering(imgOriginal = image, transformPaletteFunction = transformPaletteFunction)
+    }else if(method[1] == "mea"){
+        image <- meaDithering(imgOriginal = image, transformPaletteFunction = transformPaletteFunction)
     }
 
     ditheredImage <- new(class(img)[[1]], original = img@original,
-                         current = pixel, operations = img@operations)
+                         current = image, operations = img@operations)
 
     return(cropPixels(ditheredImage))
 }

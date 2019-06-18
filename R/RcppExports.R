@@ -6,7 +6,6 @@
 #' @export dissipatePixel
 #' @import Rcpp
 #' 
-#' @keywords internal
 #' 
 #' @references \insertRef{Hagenburg2009}{Raspository}
 #' 
@@ -14,5 +13,33 @@
 #'
 dissipatePixel <- function(imgOriginal, minimalTreshold) {
     .Call('_Raspository_dissipatePixel', PACKAGE = 'Raspository', imgOriginal, minimalTreshold)
+}
+
+#' Dither the imge with Floyd Steinberg
+#' 
+#' @export fsDithering
+#' @import Rcpp
+#' 
+#' 
+#' @references \insertRef{Floyd}{Raspository}
+#' 
+#' @return the image as matrix after dithering
+#'
+fsDithering <- function(imgOriginal, transformPaletteFunction) {
+    .Call('_Raspository_fsDithering', PACKAGE = 'Raspository', imgOriginal, transformPaletteFunction)
+}
+
+#' Dither the imge with minimized average error
+#' 
+#' @export meaDithering
+#' @import Rcpp
+#' 
+#' 
+#' @references \insertRef{Jarvis1976}{Raspository}
+#' 
+#' @return the image as matrix after dithering
+#'
+meaDithering <- function(imgOriginal, transformPaletteFunction) {
+    .Call('_Raspository_meaDithering', PACKAGE = 'Raspository', imgOriginal, transformPaletteFunction)
 }
 

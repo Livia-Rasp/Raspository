@@ -7,7 +7,6 @@ using namespace Rcpp;
 //' @export dissipatePixel
 //' @import Rcpp
 //' 
-//' @keywords internal
 //' 
 //' @references \insertRef{Hagenburg2009}{Raspository}
 //' 
