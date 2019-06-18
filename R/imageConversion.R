@@ -195,15 +195,16 @@ imageHSVFromRGB <- function(img){
 errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
                                      method = c("FS", "mae")){
     image <- img@current
+    imageTmp <- image
     
     if(method[1] == "FS"){
-        image <- fsDithering(img = image, transformPaletteFunction = transformPaletteFunction)
+        imageTmp <- fsDithering(img = imageTmp, transformPaletteFunction = transformPaletteFunction)
     }else if(method[1] == "mea"){
-        image <- meaDithering(img = image, transformPaletteFunction = transformPaletteFunction)
+        imageTmp <- meaDithering(img = imageTmp, transformPaletteFunction = transformPaletteFunction)
     }
 
     ditheredImage <- new(class(img)[[1]], original = img@original,
-                         current = image, operations = img@operations)
+                         current = imageTmp, operations = img@operations)
 
     return(cropPixels(ditheredImage))
 }
