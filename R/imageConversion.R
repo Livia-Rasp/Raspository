@@ -68,9 +68,7 @@ hsvArrayToRgb <- function(hsvArray){
 #'
 #' @examples
 imageRGBFromHSV <- function(img){
-    return(new("imageRGB", original = hsvArrayToRgb(img@original),
-               current = hsvArrayToRgb(img@current),
-               operations = img@operations))
+    return(new("imageRGB", image = hsvArrayToRgb(img@image)))
 }
 
 #' Title
@@ -86,9 +84,8 @@ imageBWFromRGB <- function(img, chPortion = c(0.33, 0.33, 0.33)){
     if(sum(chPortion) > 1){
         stop("Channel portions mustn't add up to more than one.")
     }
-    original <- img@original[,,1] * chPortion[1] + img@original[,,2] * chPortion[2] + img@original[,,3] * chPortion[3]
-    current <- img@current[,,1] * chPortion[1] + img@current[,,2] * chPortion[2] + img@current[,,3] * chPortion[3]
-    return(new("imageBW", original = original, current = current, operations = img@operations))
+    current <- img@image[,,1] * chPortion[1] + img@image[,,2] * chPortion[2] + img@image[,,3] * chPortion[3]
+    return(new("imageBW", image = current))
 }
 
 #' Title
@@ -173,9 +170,7 @@ rgbArrayToHsv <- function(rgbArray){
 #'
 #' @examples
 imageHSVFromRGB <- function(img){
-    return(new("imageHSV", original = rgbArrayToHsv(img@original),
-               current = rgbArrayToHsv(img@current),
-               operations = img@operations))
+    return(new("imageHSV", image = rgbArrayToHsv(img@image)))
 }
 
 
@@ -194,7 +189,7 @@ imageHSVFromRGB <- function(img){
 #' @examples
 errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
                                      method = c("FS", "mae")){
-    image <- img@current
+    image <- img@image
     imageTmp <- image
     
     if(method[1] == "FS"){
@@ -203,8 +198,7 @@ errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
         imageTmp <- meaDithering(img = imageTmp, transformPaletteFunction = transformPaletteFunction)
     }
 
-    ditheredImage <- new(class(img)[[1]], original = img@original,
-                         current = imageTmp, operations = img@operations)
+    ditheredImage <- new(class(img)[[1]], image = imageTmp)
 
     return(cropPixels(ditheredImage))
 }

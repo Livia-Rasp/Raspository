@@ -11,10 +11,6 @@ Title
 \section{Slots}{
 
 \describe{
-\item{\code{original}}{array.}
-
-\item{\code{current}}{array.}
-
-\item{\code{operations}}{list.}
+\item{\code{image}}{array.}
 }}
 

@@ -4,7 +4,7 @@
 \alias{MSE}
 \title{Title}
 \usage{
-MSE(object, other = NULL)
+MSE(object, other)
 }
 \arguments{
 \item{other}{}

@@ -1,14 +1,12 @@
 #' Title
 #'
-#' @slot original matrix.
-#' @slot current matrix.
-#' @slot operations list.
+#' @slot image matrix.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-imageBW <- setClass("imageBW", slots=list(original="matrix", current="matrix", operations="list"))
+imageBW <- setClass("imageBW", slots=list(image="matrix"))
 
 #' Title
 #'
@@ -23,7 +21,7 @@ imageBW <- setClass("imageBW", slots=list(original="matrix", current="matrix", o
 imageBWFromJpeg <-function(pathToJpeg){
     image<- readJPEG(pathToJpeg)
     imageBW <- image[,,1]
-    return(new("imageBW", original = imageBW, current = imageBW, operations = list()))
+    return(new("imageBW", image = imageBW))
 }
 
 #' Title
@@ -38,7 +36,7 @@ imageBWFromJpeg <-function(pathToJpeg){
 #'
 #' @examples
 plot.imageBW <- function(object){
-    plot(as.raster(object@current), axes=FALSE, box=FALSE)
+    plot(as.raster(object@image), axes=FALSE, box=FALSE)
 }
 
 #' Title
@@ -52,8 +50,8 @@ plot.imageBW <- function(object){
 #'
 #' @examples
 cropPixels<- function(object){
-    object@current[object@current > 1] <- 1
-    object@current[object@current < 0] <- 0
+    object@image[object@image > 1] <- 1
+    object@image[object@image < 0] <- 0
     return(object)
 }
 
@@ -69,8 +67,8 @@ cropPixels<- function(object){
 #'
 #' @examples
 addUnifNoise <- function(object){
-    slot(object, "current") <- slot(object, "current") +
-        runif(length(slot(object, "current")), min = -1, max = 1)
+    slot(object, "image") <- slot(object, "image") +
+        runif(length(slot(object, "image")), min = -1, max = 1)
     return(cropPixels(object))
 }
 
@@ -89,9 +87,9 @@ addUnifNoise <- function(object){
 #' @examples
 addNormalNoise <- function(object, sd = NULL){
     if(is.null(sd)){
-        object@current <- object@current + rnorm(length(object@current), sd = sd(object@current))
+        object@image <- object@image + rnorm(length(object@image), sd = sd(object@image))
     }else{
-        object@current <- object@current + rnorm(length(object@current), sd = sd)
+        object@image <- object@image + rnorm(length(object@image), sd = sd)
     }
     return(cropPixels(object))
 }
@@ -110,7 +108,7 @@ addNormalNoise <- function(object, sd = NULL){
 #'
 #' @examples
 multiplyUnifNoise <- function(object){
-    object@current <- object@current * (1 + runif(length(object@current), min = -1, max = 1))
+    object@image <- object@image * (1 + runif(length(object@image), min = -1, max = 1))
     return(cropPixels(object))
 }
 
@@ -130,10 +128,10 @@ multiplyUnifNoise <- function(object){
 #' @examples
 multiplyNormalNoise <- function(object, sd = NULL){
     if(is.null(sd)){
-        object@current <- object@current * ( 1 + rnorm(length(object@current),
-                                                       sd = sd(object@current)))
+        object@image <- object@image * ( 1 + rnorm(length(object@image),
+                                                       sd = sd(object@image)))
     }else{
-        object@current <- object@current * ( 1 + rnorm(length(object@current),
+        object@image <- object@image * ( 1 + rnorm(length(object@image),
                                                        sd = sd))
     }
     return(cropPixels(object))
@@ -155,11 +153,11 @@ multiplyNormalNoise <- function(object, sd = NULL){
 #' @examples
 saltAndPepperNoise <- function(object, percentage = .2){
     # select the indices to set to 0 or 1 at random
-    indices <- sample(length(object@current), length(object@current) * percentage)
+    indices <- sample(length(object@image), length(object@image) * percentage)
     # draw zeros and ones from a binomial distribution
     values <- rbinom(length(indices), 1, 0.5)
 
-    object@current[indices] <- values
+    object@image[indices] <- values
     return(object)
 }
 
@@ -176,12 +174,10 @@ saltAndPepperNoise <- function(object, percentage = .2){
 #' @references \insertRef{Weickert2019}{Raspository}
 #'
 #' @examples
-MSE <- function(object, other = NULL){
-    if(is.null(other)){
-        errorMatrix <- object@original - object@current
-    }else{
-        errorMatrix <- other@current - object@current
-    }
+MSE <- function(object, other){
+    
+    errorMatrix <- other@image - object@image
+    
     squaredErrorMatrix <- errorMatrix ^ 2
     return(mean(squaredErrorMatrix))
 }

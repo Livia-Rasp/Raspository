@@ -11,10 +11,6 @@ Title
 \section{Slots}{
 
 \describe{
-\item{\code{original}}{matrix.}
-
-\item{\code{current}}{matrix.}
-
-\item{\code{operations}}{list.}
+\item{\code{image}}{matrix.}
 }}
 
