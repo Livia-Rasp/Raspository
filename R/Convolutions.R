@@ -89,6 +89,17 @@ derivateKernel <- function(type = "sobel", direction = c("x", "y")){
     }
 }
 
+#' Title
+#'
+#' @param img 
+#' @param sigma 
+#' 
+#' @references \insertRef{Weickert2019}{Raspository} 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 laplacianOfGaussian <- function(img, sigma){
     ## convolve with a Gaussian
     imgGauss <- convolveImage(img, gaussianKernel(sigma = sigma))
