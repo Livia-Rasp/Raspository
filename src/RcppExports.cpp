@@ -5,6 +5,20 @@
 
 using namespace Rcpp;
 
+// bilateralFilterCpp
+SEXP bilateralFilterCpp(SEXP img, double sdSpace, double sdTone, int patchRange);
+RcppExport SEXP _Raspository_bilateralFilterCpp(SEXP imgSEXP, SEXP sdSpaceSEXP, SEXP sdToneSEXP, SEXP patchRangeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type img(imgSEXP);
+    Rcpp::traits::input_parameter< double >::type sdSpace(sdSpaceSEXP);
+    Rcpp::traits::input_parameter< double >::type sdTone(sdToneSEXP);
+    Rcpp::traits::input_parameter< int >::type patchRange(patchRangeSEXP);
+    rcpp_result_gen = Rcpp::wrap(bilateralFilterCpp(img, sdSpace, sdTone, patchRange));
+    return rcpp_result_gen;
+END_RCPP
+}
 // dissipatePixel
 SEXP dissipatePixel(const SEXP& imgOriginal, const double& minimalTreshold);
 RcppExport SEXP _Raspository_dissipatePixel(SEXP imgOriginalSEXP, SEXP minimalTresholdSEXP) {
@@ -43,6 +57,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_Raspository_bilateralFilterCpp", (DL_FUNC) &_Raspository_bilateralFilterCpp, 4},
     {"_Raspository_dissipatePixel", (DL_FUNC) &_Raspository_dissipatePixel, 2},
     {"_Raspository_fsDithering", (DL_FUNC) &_Raspository_fsDithering, 2},
     {"_Raspository_meaDithering", (DL_FUNC) &_Raspository_meaDithering, 2},

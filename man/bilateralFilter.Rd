@@ -4,7 +4,7 @@
 \alias{bilateralFilter}
 \title{Title}
 \usage{
-bilateralFilter(img, sdSpace, sdTone)
+bilateralFilter(img, sdSpace, sdTone, patchRange = 5)
 }
 \arguments{
 \item{img}{}
