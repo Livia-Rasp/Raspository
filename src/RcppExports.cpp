@@ -19,6 +19,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// dilateCpp
+NumericVector dilateCpp(SEXP img, SEXP mask);
+RcppExport SEXP _Raspository_dilateCpp(SEXP imgSEXP, SEXP maskSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type img(imgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mask(maskSEXP);
+    rcpp_result_gen = Rcpp::wrap(dilateCpp(img, mask));
+    return rcpp_result_gen;
+END_RCPP
+}
 // dissipatePixel
 SEXP dissipatePixel(const SEXP& imgOriginal, const double& minimalTreshold);
 RcppExport SEXP _Raspository_dissipatePixel(SEXP imgOriginalSEXP, SEXP minimalTresholdSEXP) {
@@ -28,6 +40,18 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const SEXP& >::type imgOriginal(imgOriginalSEXP);
     Rcpp::traits::input_parameter< const double& >::type minimalTreshold(minimalTresholdSEXP);
     rcpp_result_gen = Rcpp::wrap(dissipatePixel(imgOriginal, minimalTreshold));
+    return rcpp_result_gen;
+END_RCPP
+}
+// erodeCpp
+NumericVector erodeCpp(SEXP img, SEXP mask);
+RcppExport SEXP _Raspository_erodeCpp(SEXP imgSEXP, SEXP maskSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type img(imgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mask(maskSEXP);
+    rcpp_result_gen = Rcpp::wrap(erodeCpp(img, mask));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -58,7 +82,9 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Raspository_bilateralFilterCpp", (DL_FUNC) &_Raspository_bilateralFilterCpp, 4},
+    {"_Raspository_dilateCpp", (DL_FUNC) &_Raspository_dilateCpp, 2},
     {"_Raspository_dissipatePixel", (DL_FUNC) &_Raspository_dissipatePixel, 2},
+    {"_Raspository_erodeCpp", (DL_FUNC) &_Raspository_erodeCpp, 2},
     {"_Raspository_fsDithering", (DL_FUNC) &_Raspository_fsDithering, 2},
     {"_Raspository_meaDithering", (DL_FUNC) &_Raspository_meaDithering, 2},
     {NULL, NULL, 0}

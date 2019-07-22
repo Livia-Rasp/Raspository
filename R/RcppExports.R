@@ -7,6 +7,12 @@ bilateralFilterCpp <- function(img, sdSpace, sdTone, patchRange) {
     .Call('_Raspository_bilateralFilterCpp', PACKAGE = 'Raspository', img, sdSpace, sdTone, patchRange)
 }
 
+#' @import Rcpp
+#' @references \insertRef{Weickert2019}{Raspository} 
+dilateCpp <- function(img, mask) {
+    .Call('_Raspository_dilateCpp', PACKAGE = 'Raspository', img, mask)
+}
+
 #' Calculating the Dissipation of Pixels
 #' 
 #' @export dissipatePixel
@@ -19,6 +25,12 @@ bilateralFilterCpp <- function(img, sdSpace, sdTone, patchRange) {
 #'
 dissipatePixel <- function(imgOriginal, minimalTreshold) {
     .Call('_Raspository_dissipatePixel', PACKAGE = 'Raspository', imgOriginal, minimalTreshold)
+}
+
+#' @import Rcpp
+#' @references \insertRef{Weickert2019}{Raspository} 
+erodeCpp <- function(img, mask) {
+    .Call('_Raspository_erodeCpp', PACKAGE = 'Raspository', img, mask)
 }
 
 #' Dither the imge with Floyd Steinberg
