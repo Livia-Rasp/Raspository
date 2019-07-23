@@ -108,10 +108,10 @@ laplacianOfGaussian <- function(img, sigma){
     dx <- convolveImage(imgGauss, derivateKernel(direction = "x"))
     dy <- convolveImage(imgGauss, derivateKernel(direction = "y"))
     
-    dxx <- dx@image^2
-    dyy <- dy@image^2
+    dxx <- convolveImage(dx, derivateKernel(direction = "x"))
+    dyy <- convolveImage(dy, derivateKernel(direction = "y"))
     
 
     
-    return(new("imageBW", image = (dxx+ dyy)/2))
+    return(new("imageBW", image = (dxx@image + dyy@image) / 2))
 }
