@@ -13,7 +13,7 @@ License:    GPL-3
 Encoding:   UTF-8
 Imports:    Rdpack, BEclear, futile.logger, stats, dequer, jpeg, data.table, 
             RobustRankAggreg, igraph, graphics, grDevices, stats, methods, abind,
-            Rcpp
+            Rcpp, plyr
 LinkingTo: Rcpp
 RdMacros:   Rdpack
 RoxygenNote: 6.1.1
