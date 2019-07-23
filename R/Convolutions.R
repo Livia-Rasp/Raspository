@@ -39,7 +39,7 @@ convolveImage <- function(img, kernel){
 
 #' Title
 #' 
-#' @importFrom mvtnorm dmvnorm
+#' @importFrom mvtnorm rmvnorm
 #'
 #' @param mean 
 #' @param sigma 
