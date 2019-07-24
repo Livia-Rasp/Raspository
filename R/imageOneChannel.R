@@ -39,6 +39,32 @@ plot.imageOneChannel <- function(object){
     plot(as.raster(object@imageMatrix))
 }
 
+#' Title
+#' 
+#' @importFrom jpeg writeJPEG
+#'
+#' @param target 
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+writeJPEG.imageOneChannel <- function(object, target){
+    writeJPEG(image = object@imageMatrix, target = target)
+}
 
-
-
+#' Title
+#' 
+#' @importFrom png writePNG
+#'
+#' @param target 
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+writePNG.imageOneChannel <- function(object, target){
+    writePNG(image = object@imageMatrix, target = target)
+}
