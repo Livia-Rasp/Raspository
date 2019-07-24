@@ -1,5 +1,22 @@
 #' Title
 #'
+#' @param object
+#'
+#' @return
+#' @export
+#' @importFrom methods slot
+#' @importFrom methods slot<-
+#'
+#' @examples
+cropPixels<- function(object){
+    object@imageMatrix[object@imageMatrix > 1] <- 1
+    object@imageMatrix[object@imageMatrix < 0] <- 0
+    return(object)
+}
+
+
+#' Title
+#'
 #' @param img 
 #' @param a 
 #' @param b
