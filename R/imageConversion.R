@@ -80,12 +80,12 @@ imageRGBFromHSV <- function(img){
 #' @export
 #'
 #' @examples
-imageBWFromRGB <- function(img, chPortion = c(0.33, 0.33, 0.33)){
+imageOneChannelFromRGB <- function(img, chPortion = c(0.33, 0.33, 0.33)){
     if(sum(chPortion) > 1){
         stop("Channel portions mustn't add up to more than one.")
     }
     current <- img@image[,,1] * chPortion[1] + img@image[,,2] * chPortion[2] + img@image[,,3] * chPortion[3]
-    return(new("imageBW", image = current))
+    return(new("imageOneChannel", image = current))
 }
 
 #' Title
@@ -204,7 +204,7 @@ errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
 }
 
 
-#' Lattice Blotzman Dithering
+#' Lattice Boltzman Dithering
 #'
 #' @param img 
 #' @param epsilon 

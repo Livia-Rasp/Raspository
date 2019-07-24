@@ -1,6 +1,6 @@
 #' Calculate Coocurence
 #'
-#' @param imageBW 
+#' @param imageOneChannel
 #' @param direction 
 #' @param greyvalues 
 #'
@@ -13,9 +13,9 @@
 #' @references \insertRef{Haralick1973}{Raspository}
 #'
 #' @examples
-calculateCooccurrence <- function(imageBW, direction = c(1, 1), greyvalues = 256){
+calculateCooccurrence <- function(imageOneChannel, direction = c(1, 1), greyvalues = 256){
     
-    roundedImg <- round(imageBW@image * (greyvalues - 1) + 1)
+    roundedImg <- round(imageOneChannel@image * (greyvalues - 1) + 1)
     
     if(direction[1] >= 0 && direction[2] >= 0){
         originalValue <- roundedImg[1: (nrow(roundedImg) - direction[1]), 

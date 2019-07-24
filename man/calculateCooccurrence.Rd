@@ -4,11 +4,10 @@
 \alias{calculateCooccurrence}
 \title{Calculate Coocurence}
 \usage{
-calculateCooccurrence(imageBW, direction = c(1, 1), greyvalues = 256)
+calculateCooccurrence(imageOneChannel, direction = c(1, 1),
+  greyvalues = 256)
 }
 \arguments{
-\item{imageBW}{}
-
 \item{direction}{}
 
 \item{greyvalues}{}

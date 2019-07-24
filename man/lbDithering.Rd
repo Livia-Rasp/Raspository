@@ -2,7 +2,7 @@
 % Please edit documentation in R/imageConversion.R
 \name{lbDithering}
 \alias{lbDithering}
-\title{Lattice Blotzman Dithering}
+\title{Lattice Boltzman Dithering}
 \usage{
 lbDithering(img, epsilon = 0.5, minimalTreshold = 0.01)
 }
@@ -14,7 +14,7 @@ lbDithering(img, epsilon = 0.5, minimalTreshold = 0.01)
 \item{minimalTreshold}{}
 }
 \description{
-Lattice Blotzman Dithering
+Lattice Boltzman Dithering
 }
 \references{
 \insertRef{Hagenburg2009}{Raspository}

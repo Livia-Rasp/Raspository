@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-imageBW <- setClass("imageBW", slots=list(image="matrix"))
+imageOneChannel <- setClass("imageOneChannel", slots=list(image="matrix"))
 
 #' Title
 #'
@@ -18,10 +18,10 @@ imageBW <- setClass("imageBW", slots=list(image="matrix"))
 #' @importFrom methods new
 #'
 #' @examples
-imageBWFromJpeg <-function(pathToJpeg){
+imageOneChannelFromJpeg <-function(pathToJpeg){
     image<- readJPEG(pathToJpeg)
-    imageBW <- image[,,1]
-    return(new("imageBW", image = imageBW))
+    imageOneChannel <- image[,,1]
+    return(new("imageOneChannel", image = imageOneChannel))
 }
 
 #' Title
@@ -35,7 +35,7 @@ imageBWFromJpeg <-function(pathToJpeg){
 #' @importFrom methods slot
 #'
 #' @examples
-plot.imageBW <- function(object){
+plot.imageOneChannel <- function(object){
     plot(as.raster(object@image))
 }
 

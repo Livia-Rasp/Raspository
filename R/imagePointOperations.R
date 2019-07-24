@@ -11,7 +11,7 @@
 #'
 #' @examples
 affineGreyscaleTransformation <- function(img, a, b){
-    return(new("imageBW", image = (img@image * a) + b))
+    return(new("imageOneChannel", image = (img@image * a) + b))
 }
 
 #' Title
@@ -30,7 +30,7 @@ logarithmicDynamicCompression <- function(img, c = NULL){
         c <- 1 / log(1 + max(img@image))
     }
     
-    return(new("imageBW", image = c * log(1 + img@image)))
+    return(new("imageOneChannel", image = c * log(1 + img@image)))
 }
 
 #' Title
@@ -46,5 +46,5 @@ logarithmicDynamicCompression <- function(img, c = NULL){
 #' @examples
 gammaCorrection <- function(img, gamma){
     maxPixel <- max(img@image)
-    return(new("imageBW", image = maxPixel * (img@image/maxPixel)^gamma))
+    return(new("imageOneChannel", image = maxPixel * (img@image/maxPixel)^gamma))
 }

@@ -14,6 +14,6 @@ bilateralFilter <- function(img, sdSpace, sdTone, patchRange = 5){
     ## This function is a wrapper around the corresponding Cpp function
     imgMatrix <- img@image
     
-    return(new("imageBW", image = bilateralFilterCpp(imgMatrix,sdSpace, sdTone,
+    return(new("imageOneChannel", image = bilateralFilterCpp(imgMatrix,sdSpace, sdTone,
                                                      patchRange)))
 }

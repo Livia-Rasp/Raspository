@@ -32,7 +32,7 @@ convolveImage <- function(img, kernel){
     
     
     ## rescaling
-    return(new("imageBW", image = (imgFilterApplied  - min(imgFilterApplied ))/ 
+    return(new("imageOneChannel", image = (imgFilterApplied  - min(imgFilterApplied ))/ 
         (max(imgFilterApplied ) - min(imgFilterApplied ))))
     
 }
@@ -113,5 +113,5 @@ laplacianOfGaussian <- function(img, sigma){
     
 
     
-    return(new("imageBW", image = (dxx@image + dyy@image) / 2))
+    return(new("imageOneChannel", image = (dxx@image + dyy@image) / 2))
 }
