@@ -12,7 +12,7 @@
 #' @examples
 bilateralFilter <- function(img, sdSpace, sdTone, patchRange = 5){
     ## This function is a wrapper around the corresponding Cpp function
-    imgMatrix <- img@image
+    imgMatrix <- img@imageMatrix
     
     return(new("imageOneChannel", image = bilateralFilterCpp(imgMatrix,sdSpace, sdTone,
                                                      patchRange)))

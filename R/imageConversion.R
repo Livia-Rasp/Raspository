@@ -68,7 +68,7 @@ hsvArrayToRgb <- function(hsvArray){
 #'
 #' @examples
 imageRGBFromHSV <- function(img){
-    return(new("imageRGB", image = hsvArrayToRgb(img@image)))
+    return(new("imageRGB", image = hsvArrayToRgb(img@imageMatrix)))
 }
 
 #' Title
@@ -84,8 +84,9 @@ imageOneChannelFromRGB <- function(img, chPortion = c(0.33, 0.33, 0.33)){
     if(sum(chPortion) > 1){
         stop("Channel portions mustn't add up to more than one.")
     }
-    current <- img@image[,,1] * chPortion[1] + img@image[,,2] * chPortion[2] + img@image[,,3] * chPortion[3]
-    return(new("imageOneChannel", image = current))
+    current <- img@imageArray[,,1] * chPortion[1] + 
+        img@imageArray[,,2] * chPortion[2] + img@imageArray[,,3] * chPortion[3]
+    return(new("imageOneChannel", imageMatrix = current))
 }
 
 #' Title
@@ -170,7 +171,7 @@ rgbArrayToHsv <- function(rgbArray){
 #'
 #' @examples
 imageHSVFromRGB <- function(img){
-    return(new("imageHSV", image = rgbArrayToHsv(img@image)))
+    return(new("imageHSV", image = rgbArrayToHsv(img@imageArray)))
 }
 
 
@@ -189,7 +190,7 @@ imageHSVFromRGB <- function(img){
 #' @examples
 errorDiffusiondDithering <- function(img, transformPaletteFunction = round,
                                      method = c("FS", "mae")){
-    image <- img@image
+    image <- img@imageMatrix
     imageTmp <- image
     
     if(method[1] == "FS"){

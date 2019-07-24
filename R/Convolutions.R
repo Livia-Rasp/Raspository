@@ -11,8 +11,8 @@
 #' @examples
 convolveImage <- function(img, kernel){
     ## pad kernel with zeros
-    if(!all(dim(img@image) == dim(kernel))){
-        paddedKernel <- matrix(0, nrow = nrow(img@image), ncol = ncol(img@image))
+    if(!all(dim(img@imageMatrix) == dim(kernel))){
+        paddedKernel <- matrix(0, nrow = nrow(img@imageMatrix), ncol = ncol(img@imageMatrix))
         
         for(i in seq(nrow(kernel))){
             
@@ -26,13 +26,13 @@ convolveImage <- function(img, kernel){
     
     fKernel <- fft(kernel)
     
-    fImg <- fft(img@image)
+    fImg <- fft(img@imageMatrix)
     
     imgFilterApplied <- Re(fft(fKernel * fImg, inverse = TRUE))
     
     
     ## rescaling
-    return(new("imageOneChannel", image = (imgFilterApplied  - min(imgFilterApplied ))/ 
+    return(new("imageOneChannel", imageMatrix = (imgFilterApplied  - min(imgFilterApplied ))/ 
         (max(imgFilterApplied ) - min(imgFilterApplied ))))
     
 }
@@ -113,5 +113,5 @@ laplacianOfGaussian <- function(img, sigma){
     
 
     
-    return(new("imageOneChannel", image = (dxx@image + dyy@image) / 2))
+    return(new("imageOneChannel", image = (dxx@imageMatrix+ dyy@imageMatrix) / 2))
 }

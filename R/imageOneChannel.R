@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-imageOneChannel <- setClass("imageOneChannel", slots=list(image="matrix"))
+imageOneChannel <- setClass("imageOneChannel", slots=list(imageMatrix="matrix"))
 
 #' Title
 #'
@@ -21,7 +21,7 @@ imageOneChannel <- setClass("imageOneChannel", slots=list(image="matrix"))
 imageOneChannelFromJpeg <-function(pathToJpeg){
     image<- readJPEG(pathToJpeg)
     imageOneChannel <- image[,,1]
-    return(new("imageOneChannel", image = imageOneChannel))
+    return(new("imageOneChannel", imageMatrix = imageOneChannel))
 }
 
 #' Title
@@ -36,7 +36,7 @@ imageOneChannelFromJpeg <-function(pathToJpeg){
 #'
 #' @examples
 plot.imageOneChannel <- function(object){
-    plot(as.raster(object@image))
+    plot(as.raster(object@imageMatrix))
 }
 
 #' Title
@@ -50,8 +50,8 @@ plot.imageOneChannel <- function(object){
 #'
 #' @examples
 cropPixels<- function(object){
-    object@image[object@image > 1] <- 1
-    object@image[object@image < 0] <- 0
+    object@imageMatrix[object@imageMatrix > 1] <- 1
+    object@imageMatrix[object@imageMatrix < 0] <- 0
     return(object)
 }
 
@@ -87,9 +87,9 @@ addUnifNoise <- function(object){
 #' @examples
 addNormalNoise <- function(object, sd = NULL){
     if(is.null(sd)){
-        object@image <- object@image + rnorm(length(object@image), sd = sd(object@image))
+        object@imageMatrix <- object@imageMatrix + rnorm(length(object@imageMatrix), sd = sd(object@imageMatrix))
     }else{
-        object@image <- object@image + rnorm(length(object@image), sd = sd)
+        object@imageMatrix <- object@imageMatrix + rnorm(length(object@imageMatrix), sd = sd)
     }
     return(cropPixels(object))
 }
@@ -108,7 +108,7 @@ addNormalNoise <- function(object, sd = NULL){
 #'
 #' @examples
 multiplyUnifNoise <- function(object){
-    object@image <- object@image * (1 + runif(length(object@image), min = -1, max = 1))
+    object@imageMatrix <- object@imageMatrix * (1 + runif(length(object@imageMatrix), min = -1, max = 1))
     return(cropPixels(object))
 }
 
@@ -128,10 +128,10 @@ multiplyUnifNoise <- function(object){
 #' @examples
 multiplyNormalNoise <- function(object, sd = NULL){
     if(is.null(sd)){
-        object@image <- object@image * ( 1 + rnorm(length(object@image),
-                                                       sd = sd(object@image)))
+        object@imageMatrix <- object@imageMatrix * ( 1 + rnorm(length(object@imageMatrix),
+                                                       sd = sd(object@imageMatrix)))
     }else{
-        object@image <- object@image * ( 1 + rnorm(length(object@image),
+        object@imageMatrix <- object@imageMatrix * ( 1 + rnorm(length(object@imageMatrix),
                                                        sd = sd))
     }
     return(cropPixels(object))
@@ -153,11 +153,11 @@ multiplyNormalNoise <- function(object, sd = NULL){
 #' @examples
 saltAndPepperNoise <- function(object, percentage = .2){
     # select the indices to set to 0 or 1 at random
-    indices <- sample(length(object@image), length(object@image) * percentage)
+    indices <- sample(length(object@imageMatrix), length(object@imageMatrix) * percentage)
     # draw zeros and ones from a binomial distribution
     values <- rbinom(length(indices), 1, 0.5)
 
-    object@image[indices] <- values
+    object@imageMatrix[indices] <- values
     return(object)
 }
 
@@ -176,7 +176,7 @@ saltAndPepperNoise <- function(object, percentage = .2){
 #' @examples
 MSE <- function(object, other){
     
-    errorMatrix <- other@image - object@image
+    errorMatrix <- other@imageMatrix - object@imageMatrix
     
     squaredErrorMatrix <- errorMatrix ^ 2
     return(mean(squaredErrorMatrix))

@@ -1,12 +1,12 @@
 #' Title
 #'
-#' @slot image array.
+#' @slot imageArray array.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-imageRGB <- setClass("imageRGB", slots=list(image = "array"))
+imageRGB <- setClass("imageRGB", slots=list(imageArray = "array"))
 
 #' Title
 #'
@@ -19,7 +19,7 @@ imageRGB <- setClass("imageRGB", slots=list(image = "array"))
 #' @examples
 imageRGBFromJpeg <-function(pathToJpeg){
     image<- readJPEG(pathToJpeg)
-    return(new("imageRGB", image = image))
+    return(new("imageRGB", imageArray = image))
 }
 
 #' Title
@@ -31,7 +31,7 @@ imageRGBFromJpeg <-function(pathToJpeg){
 #'
 #' @examples
 plot.imageRGB <- function(object){
-    plot(as.raster(object@image))
+    plot(as.raster(object@imageArray))
 }
 
 

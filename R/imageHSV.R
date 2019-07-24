@@ -8,6 +8,6 @@
 #' @export
 #'
 #' @examples
-imageHSV <- setClass("imageHSV", slots=list(image="array"))
+imageHSV <- setClass("imageHSV", slots=list(imageArray="array"))
 
 

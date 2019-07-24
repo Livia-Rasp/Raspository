@@ -40,7 +40,7 @@ diskMask <- function(radius = 5, method = "naive"){
 #'
 #' @examples
 morphDilate <- function(img, mask = diskMask()){
-    imgMatrix <- img@image
+    imgMatrix <- img@imageMatrix
     
     return(new("imageOneChannel", image = dilateCpp(imgMatrix, as.matrix(mask))))
 }
@@ -57,7 +57,7 @@ morphDilate <- function(img, mask = diskMask()){
 #'
 #' @examples
 morphErode <- function(img, mask = diskMask()){
-    imgMatrix <- img@image
+    imgMatrix <- img@imageMatrix
     
     return(new("imageOneChannel", image = erodeCpp(imgMatrix, as.matrix(mask))))
 }

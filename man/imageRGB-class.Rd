@@ -11,6 +11,6 @@ Title
 \section{Slots}{
 
 \describe{
-\item{\code{image}}{array.}
+\item{\code{imageArray}}{array.}
 }}
 
