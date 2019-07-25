@@ -1,11 +1,35 @@
+#' Title
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 min.imageOneChannel <- function(object){
     return(min(object@imageMatrix))
 }
 
+#' Title
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 max.imageOneChannel <- function(object){
     return(max(object@imageMatrix))
 }
 
+#' Title
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 mean.imageOneChannel <- function(object){
     return(mean(object@imageMatrix))
 }
