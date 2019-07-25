@@ -87,3 +87,42 @@ morphOpen <- function(img, mask = diskMask()){
 morphClose <- function(img, mask = diskMask()){
     return(morphErode(morphDilate(img, mask = mask), mask = mask))
 }
+
+#' Title
+#'
+#' @param img 
+#' @param mask 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+morphWTH <- function(img, mask = diskMask()){
+    return(img - morphOpen(img, mask = mask))
+}
+
+#' Title
+#'
+#' @param img 
+#' @param mask 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+morphBTH <- function(img, mask = diskMask()){
+    return(morphClose(img, mask = mask) - img)
+}
+
+#' Title
+#'
+#' @param img 
+#' @param mask 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+morphSTH <- function(img, mask = diskMask()){
+    return(morphClose(img, mask = mask) - morphOpen(img, mask = mask))
+}
