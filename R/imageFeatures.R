@@ -1,3 +1,15 @@
+min.imageOneChannel <- function(object){
+    return(min(object@imageMatrix))
+}
+
+max.imageOneChannel <- function(object){
+    return(max(object@imageMatrix))
+}
+
+mean.imageOneChannel <- function(object){
+    return(mean(object@imageMatrix))
+}
+
 #' Calculate Coocurence
 #'
 #' @param imageOneChannel

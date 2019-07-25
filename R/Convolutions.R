@@ -32,8 +32,7 @@ convolveImage <- function(img, kernel){
     
     
     ## rescaling
-    return(new("imageOneChannel", imageMatrix = (imgFilterApplied  - min(imgFilterApplied ))/ 
-        (max(imgFilterApplied ) - min(imgFilterApplied ))))
+    return(new("imageOneChannel", imageMatrix = affineRescale(imgFilterApplied)))
     
 }
 

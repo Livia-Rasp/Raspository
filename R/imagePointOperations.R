@@ -14,7 +14,6 @@ cropPixels<- function(object){
     return(object)
 }
 
-
 #' Title
 #'
 #' @param img 
@@ -29,6 +28,21 @@ cropPixels<- function(object){
 #' @examples
 affineGreyscaleTransformation <- function(img, a, b){
     return(new("imageOneChannel", image = (img@imageMatrix * a) + b))
+}
+
+#' Title
+#'
+#' @param img 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+affineRescale <- function(img){
+    a <- max(img) - min(img)
+    b <- min(img) / a
+    
+    return(affineGreyscaleTransformation(img = img, a, b))
 }
 
 #' Title
