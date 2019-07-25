@@ -8,7 +8,7 @@
 #'
 #' @examples
 `+.imageOneChannel` <- function(imgA, B){
-    if(is.imageOneChannel){
+    if(is.imageOneChannel(B)){
         return(new("imageOneChannel", image = imgA@imageMatrix + B@imageMatrix))
     }else{
         return(new("imageOneChannel", image = imgA@imageMatrix + B))
@@ -26,10 +26,10 @@
 #'
 #' @examples
 `-.imageOneChannel` <- function(imgA, B){
-    if(is.imageOneChannel){
-        return(new("imageOneChannel", image = imgA@imageMatrix - B@imageMatrix))
+    if(is.imageOneChannel(B)){
+        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix - B@imageMatrix))
     }else{
-        return(new("imageOneChannel", image = imgA@imageMatrix - B))
+        return(new("imageOneChannel", imageMatrix  = imgA@imageMatrix - B))
     }
     
 }
@@ -44,10 +44,10 @@
 #'
 #' @examples
 `*.imageOneChannel` <- function(imgA, B){
-    if(is.imageOneChannel){
-        return(new("imageOneChannel", image = imgA@imageMatrix * B@imageMatrix))
+    if(is.imageOneChannel(B)){
+        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix * B@imageMatrix))
     }else{
-        return(new("imageOneChannel", image = imgA@imageMatrix * B))
+        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix * B))
     }
     
 }
@@ -62,10 +62,10 @@
 #'
 #' @examples
 `/.imageOneChannel` <- function(imgA, B){
-    if(is.imageOneChannel){
-        return(new("imageOneChannel", image = imgA@imageMatrix / B@imageMatrix))
+    if(is.imageOneChannel(B)){
+        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix / B@imageMatrix))
     }else{
-        return(new("imageOneChannel", image = imgA@imageMatrix / B))
+        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix / B))
     }
     
 }
