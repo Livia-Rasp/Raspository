@@ -8,6 +8,10 @@
 #' @examples
 imageOneChannel <- setClass("imageOneChannel", slots=list(imageMatrix="matrix"))
 
+is.imageOneChannel <-function(x){
+    return(inherits(x, "imageOneChannel"))
+}
+
 #' Title
 #'
 #' @param pathToJpeg
