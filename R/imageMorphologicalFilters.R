@@ -39,13 +39,13 @@ circleMask <- function(radius, method = c("bresenham", "sqrt", "anglefunction"))
         DT_Coordinates <- rbind(DT_Coordinates, 
                                 data.table(x = c(0, 0, radius, - radius), 
                                            y = c(radius, - radius, 0, 0)))
-        f <- 5/4 -radius
+        error <- 5/4 -radius
         
         while(x < y){
-            if(f < 0){
-                f <- f + 2 * x + 1
+            if(error < 0){
+                error <- error + 2 * x + 1
             }else{
-                f <- f + 2 * x  - 2 * y + 2
+                error <- error + 2 * x  - 2 * y + 2
                 y <- y - 1
             }
             x <- x + 1
@@ -60,6 +60,7 @@ circleMask <- function(radius, method = c("bresenham", "sqrt", "anglefunction"))
     
     return(DT_Coordinates)
 }
+
 
 #' Title
 #' 
@@ -88,7 +89,7 @@ fillConvexShape <- function(mask){
 #' @export
 #'
 #' @examples
-diskMask <- function(radius = 5, method = c("bresenham", "naive")){
+diskMask <- function(radius = 4, method = c("bresenham", "naive")){
     DT_diskCoordinates <- data.table(x=integer(), y=integer())
     
     if(method[1] == "naive"){
@@ -109,6 +110,22 @@ diskMask <- function(radius = 5, method = c("bresenham", "naive")){
     }
     
     return(DT_diskCoordinates)
+}
+
+
+#' Title
+#' 
+#' @import data.table
+#'
+#' @param a 
+#' @param b 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+rectMask <- function(a, b){
+    return(CJ(x = -a:a, -b:b))
 }
 
 #' Title
