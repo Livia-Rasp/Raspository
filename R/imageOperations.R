@@ -7,11 +7,16 @@
 #' @export
 #'
 #' @examples
-`+.imageOneChannel` <- function(imgA, B){
+`+.imageOneChannel` <- function(A, B){
     if(is.imageOneChannel(B)){
-        return(new("imageOneChannel", image = imgA@imageMatrix + B@imageMatrix))
+        if(is.imageOneChannel(A)){
+            return(new("imageOneChannel", imageMatrix = A@imageMatrix + B@imageMatrix))
+        }else{
+            return(new("imageOneChannel", imageMatrix = A + B@imageMatrix))
+        }
+        
     }else{
-        return(new("imageOneChannel", image = imgA@imageMatrix + B))
+        return(new("imageOneChannel", imageMatrix = A@imageMatrix + B))
     }
     
 }
@@ -25,11 +30,15 @@
 #' @export
 #'
 #' @examples
-`-.imageOneChannel` <- function(imgA, B){
+`-.imageOneChannel` <- function(A, B){
     if(is.imageOneChannel(B)){
-        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix - B@imageMatrix))
+        if(is.imageOneChannel(A)){
+            return(new("imageOneChannel", imageMatrix = A@imageMatrix - B@imageMatrix))
+        }else{
+            return(new("imageOneChannel", imageMatrix = A - B@imageMatrix))
+        }
     }else{
-        return(new("imageOneChannel", imageMatrix  = imgA@imageMatrix - B))
+        return(new("imageOneChannel", imageMatrix  = A@imageMatrix - B))
     }
     
 }
@@ -43,11 +52,15 @@
 #' @export
 #'
 #' @examples
-`*.imageOneChannel` <- function(imgA, B){
+`*.imageOneChannel` <- function(A, B){
     if(is.imageOneChannel(B)){
-        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix * B@imageMatrix))
+        if(is.imageOneChannel(A)){
+            return(new("imageOneChannel", imageMatrix = A@imageMatrix * B@imageMatrix))
+        }else{
+            return(new("imageOneChannel", imageMatrix = A * B@imageMatrix))
+        }
     }else{
-        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix * B))
+        return(new("imageOneChannel", imageMatrix = A@imageMatrix * B))
     }
     
 }
@@ -61,11 +74,15 @@
 #' @export
 #'
 #' @examples
-`/.imageOneChannel` <- function(imgA, B){
+`/.imageOneChannel` <- function(A, B){
     if(is.imageOneChannel(B)){
-        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix / B@imageMatrix))
+        if(is.imageOneChannel(A)){
+            return(new("imageOneChannel", imageMatrix = A@imageMatrix / B@imageMatrix))
+        }else{
+            return(new("imageOneChannel", imageMatrix = A / B@imageMatrix))
+        }
     }else{
-        return(new("imageOneChannel", imageMatrix = imgA@imageMatrix / B))
+        return(new("imageOneChannel", imageMatrix = A@imageMatrix / B))
     }
     
 }

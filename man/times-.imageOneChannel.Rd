@@ -4,12 +4,12 @@
 \alias{*.imageOneChannel}
 \title{Title}
 \usage{
-\method{*}{imageOneChannel}(imgA, B)
+\method{*}{imageOneChannel}(A, B)
 }
 \arguments{
-\item{imgA}{}
-
 \item{B}{}
+
+\item{imgA}{}
 }
 \description{
 Title

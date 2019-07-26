@@ -27,7 +27,7 @@ cropPixels<- function(object){
 #'
 #' @examples
 affineGreyscaleTransformation <- function(img, a, b){
-    return(new("imageOneChannel", image = (img@imageMatrix * a) + b))
+    return(new("imageOneChannel", imageMatrix = (img@imageMatrix * a) + b))
 }
 
 #' Title
@@ -61,7 +61,7 @@ logarithmicDynamicCompression <- function(img, c = NULL){
         c <- 1 / log(1 + max(img@imageMatrix))
     }
     
-    return(new("imageOneChannel", image = c * log(1 + img@imageMatrix)))
+    return(new("imageOneChannel", imageMatrix = c * log(1 + img@imageMatrix)))
 }
 
 #' Title
@@ -77,5 +77,5 @@ logarithmicDynamicCompression <- function(img, c = NULL){
 #' @examples
 gammaCorrection <- function(img, gamma){
     maxPixel <- max(img@imageMatrix)
-    return(new("imageOneChannel", image = maxPixel * (img@imageMatrix/maxPixel)^gamma))
+    return(new("imageOneChannel", imageMatrix = maxPixel * (img@imageMatrix/maxPixel)^gamma))
 }
