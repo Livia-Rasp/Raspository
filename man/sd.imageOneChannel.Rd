@@ -7,7 +7,7 @@
 sd.imageOneChannel(object)
 }
 \arguments{
-\item{object}{}
+\item{object}{An image of class \code{\link[Raspository]{imageOneChannel}}.}
 }
 \description{
 Title

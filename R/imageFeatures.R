@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param object 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
 #' @return
 #' @export
@@ -12,7 +12,7 @@ min.imageOneChannel <- function(object){
 
 #' Title
 #'
-#' @param object 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
 #' @return
 #' @export
@@ -24,13 +24,13 @@ max.imageOneChannel <- function(object){
 
 #' Title
 #'
-#' @param img 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
 #' @return
 #' @export
 #'
 #' @examples
-pixelSum.imageOneChannel <- function(img){
+pixelSum.imageOneChannel <- function(object){
     return(sum(object@imageMatrix))
 }
 
@@ -58,7 +58,7 @@ mean.imageOneChannel <- function(object){
 #' 
 #' @importFrom stats sd
 #'
-#' @param object 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
 #' @return
 #' @export
@@ -72,7 +72,7 @@ sd.imageOneChannel <- function(object){
 #' 
 #' @importFrom e1071 skewness
 #'
-#' @param object 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
 #' @return
 #' @export
@@ -86,7 +86,7 @@ skewness.imageOneChannel <- function(object){
 #' 
 #' @importFrom e1071 kurtosis
 #'
-#' @param object 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
 #' @return
 #' @export
@@ -98,7 +98,8 @@ kurtosis.imageOneChannel <- function(object){
 
 #' Calculate Coocurence
 #'
-#' @param imageOneChannel
+#' @param imageOneChannel An image of class 
+#' \code{\link[Raspository]{imageOneChannel}}.
 #' @param direction 
 #' @param greyvalues 
 #'

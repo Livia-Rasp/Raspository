@@ -4,10 +4,10 @@
 \alias{pixelSum.imageOneChannel}
 \title{Title}
 \usage{
-pixelSum.imageOneChannel(img)
+pixelSum.imageOneChannel(object)
 }
 \arguments{
-\item{img}{}
+\item{object}{An image of class \code{\link[Raspository]{imageOneChannel}}.}
 }
 \description{
 Title

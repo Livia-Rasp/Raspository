@@ -8,6 +8,9 @@ calculateCooccurrence(imageOneChannel, direction = c(1, 1),
   greyvalues = 256)
 }
 \arguments{
+\item{imageOneChannel}{An image of class 
+\code{\link[Raspository]{imageOneChannel}}.}
+
 \item{direction}{}
 
 \item{greyvalues}{}
