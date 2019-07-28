@@ -22,6 +22,10 @@ max.imageOneChannel <- function(object){
     return(max(object@imageMatrix))
 }
 
+pixelSum.imageOneChannel <- function(img){
+    return(sum(object@imageMatrix))
+}
+
 #' Title
 #'
 #' @param object 
@@ -32,6 +36,46 @@ max.imageOneChannel <- function(object){
 #' @examples
 mean.imageOneChannel <- function(object){
     return(mean(object@imageMatrix))
+}
+
+#' Title
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+sd.imageOneChannel <- function(object){
+    return(sd(object@imageMatrix))
+}
+
+#' Title
+#' 
+#' @importFrom e1071 skewness
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+skewness.imageOneChannel <- function(object){
+    return(skewness(object@imageMatrix))
+}
+
+#' Title
+#' 
+#' @importFrom e1071 kurtosis
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+kurtosis.imageOneChannel <- function(object){
+    return(kurtosis(object@imageMatrix))
 }
 
 #' Calculate Coocurence
