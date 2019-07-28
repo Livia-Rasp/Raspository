@@ -2,13 +2,23 @@
 % Please edit documentation in R/imageFeatures.R
 \name{mean.imageOneChannel}
 \alias{mean.imageOneChannel}
-\title{Title}
+\title{Mean Greyvalue}
 \usage{
 \method{mean}{imageOneChannel}(object)
 }
 \arguments{
-\item{object}{}
+\item{object}{An image of class \code{\link[Raspository]{imageOneChannel}}.}
+}
+\value{
+The mean greyvalue of the image
 }
 \description{
-Title
+Calculates the arithmetic \code{\link{mean}} of all grey values
+contained in the image.
+}
+\details{
+Mean Greyvalue
+}
+\seealso{
+\code{\link{mean}}
 }

@@ -22,16 +22,32 @@ max.imageOneChannel <- function(object){
     return(max(object@imageMatrix))
 }
 
+#' Title
+#'
+#' @param img 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pixelSum.imageOneChannel <- function(img){
     return(sum(object@imageMatrix))
 }
 
-#' Title
+#' Mean Greyvalue
+#' 
+#' @description Calculates the arithmetic \code{\link{mean}} of all grey values
+#' contained in the image.
+#' 
+#' @export mean
 #'
-#' @param object 
+#' @param object An image of class \code{\link[Raspository]{imageOneChannel}}.
 #'
-#' @return
-#' @export
+#' @return The mean greyvalue of the image
+#' 
+#' @seealso \code{\link{mean}}
+#' 
+#' @title Mean Greyvalue
 #'
 #' @examples
 mean.imageOneChannel <- function(object){
@@ -39,6 +55,8 @@ mean.imageOneChannel <- function(object){
 }
 
 #' Title
+#' 
+#' @importFrom stats sd
 #'
 #' @param object 
 #'

@@ -1,4 +1,6 @@
 #' Title
+#' 
+#' @importFrom stats fft
 #'
 #' @param img 
 #' @param kernel 
