@@ -9,11 +9,16 @@
 imageOneChannel <- setClass("imageOneChannel", slots=list(imageMatrix="matrix"))
 
 #' Title
-#'
-#' @param x 
-#'
-#' @return
+#' 
+#' @description Checks if an object is of type \code{\link[Raspository]{imageOneChannel}}.
+#' 
 #' @export
+#'
+#' @param x any R object.
+#'
+#' @return \code{TRUE}, if the object is of type \code{\link[Raspository]{imageOneChannel}}.
+#'  \code{FALSE} otherwise.
+#' 
 #'
 #' @examples
 is.imageOneChannel <-function(x){

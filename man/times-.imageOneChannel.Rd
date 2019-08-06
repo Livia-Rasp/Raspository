@@ -2,15 +2,22 @@
 % Please edit documentation in R/imageOperations.R
 \name{*.imageOneChannel}
 \alias{*.imageOneChannel}
-\title{Title}
+\title{Image Multiplication}
 \usage{
 \method{*}{imageOneChannel}(A, B)
 }
 \arguments{
-\item{B}{}
+\item{A}{An image of class \code{\link[Raspository]{imageOneChannel}} or 
+a scalar.}
 
-\item{imgA}{}
+\item{B}{An image of class \code{\link[Raspository]{imageOneChannel}} or 
+a scalar.}
+}
+\value{
+The resulting image of class \code{\link[Raspository]{imageOneChannel}}.
 }
 \description{
-Title
+Multiplication of one image with another image or a scalar. At least 
+one of the two parameters has to be an image. If both are images, the operation
+is executed entrywise.
 }

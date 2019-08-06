@@ -7,8 +7,12 @@
 is.imageOneChannel(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{any R object.}
+}
+\value{
+\code{TRUE}, if the object is of type \code{\link[Raspository]{imageOneChannel}}.
+ \code{FALSE} otherwise.
 }
 \description{
-Title
+Checks if an object is of type \code{\link[Raspository]{imageOneChannel}}.
 }
