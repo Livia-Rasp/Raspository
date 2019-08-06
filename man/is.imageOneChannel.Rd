@@ -2,7 +2,7 @@
 % Please edit documentation in R/imageOneChannel.R
 \name{is.imageOneChannel}
 \alias{is.imageOneChannel}
-\title{Title}
+\title{Is It A One Channel Image}
 \usage{
 is.imageOneChannel(x)
 }

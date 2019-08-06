@@ -8,7 +8,7 @@
 #' @examples
 imageOneChannel <- setClass("imageOneChannel", slots=list(imageMatrix="matrix"))
 
-#' Title
+#' Is It A One Channel Image
 #' 
 #' @description Checks if an object is of type \code{\link[Raspository]{imageOneChannel}}.
 #' 
