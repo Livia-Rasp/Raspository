@@ -4,7 +4,7 @@
 \alias{max.imageOneChannel}
 \title{Title}
 \usage{
-\method{max}{imageOneChannel}(object)
+\method{max}{imageOneChannel}(object, na.rm = FALSE)
 }
 \arguments{
 \item{object}{An image of class \code{\link[Raspository]{imageOneChannel}}.}

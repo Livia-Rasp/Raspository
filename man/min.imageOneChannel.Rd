@@ -4,7 +4,7 @@
 \alias{min.imageOneChannel}
 \title{Title}
 \usage{
-\method{min}{imageOneChannel}(object)
+\method{min}{imageOneChannel}(object, na.rm = FALSE)
 }
 \arguments{
 \item{object}{An image of class \code{\link[Raspository]{imageOneChannel}}.}

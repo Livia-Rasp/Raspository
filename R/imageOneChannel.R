@@ -85,3 +85,42 @@ writeJPEG.imageOneChannel <- function(object, target){
 writePNG.imageOneChannel <- function(object, target){
     writePNG(image = object@imageMatrix, target = target)
 }
+
+#' Title
+#' 
+#' @import data.table
+#'
+#' @param img 
+#' @param log.scale 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+calculateFourierSpectrum <- function(img, log.scale = TRUE, shift = TRUE){
+    
+    if(shift){
+        
+        DT <- CJ(1:nrow(img@imageMatrix), 1:ncol(img@imageMatrix))
+    
+        DT[, sign := (-1)^(V1 + V2)]
+        shiftMatrix <- new("imageOneChannel", imageMatrix = as.matrix(dcast(DT, V1 ~ V2, value.var = "sign")[,-1]))
+        
+        shiftedImg <- img * shiftMatrix
+        
+        imgFTrans <- fft(shiftedImg@imageMatrix)
+    }else{
+        imgFTrans <- fft(img@imageMatrix)
+    }
+    
+    ## calculate the complex norm
+    fourierSpectrum <- new("imageOneChannel", 
+                           imageMatrix = sqrt(Re(Conj(imgFTrans) * imgFTrans)))
+    
+    ## perform logarithmic rescaling
+    if(log.scale){
+        fourierSpectrum <- logarithmicDynamicCompression(fourierSpectrum)
+    }
+    
+    return(fourierSpectrum)
+}

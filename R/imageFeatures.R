@@ -6,8 +6,8 @@
 #' @export
 #'
 #' @examples
-min.imageOneChannel <- function(object){
-    return(min(object@imageMatrix))
+min.imageOneChannel <- function(object, na.rm = FALSE){
+    return(min(object@imageMatrix, na.rm = na.rm))
 }
 
 #' Title
@@ -18,8 +18,8 @@ min.imageOneChannel <- function(object){
 #' @export
 #'
 #' @examples
-max.imageOneChannel <- function(object){
-    return(max(object@imageMatrix))
+max.imageOneChannel <- function(object, na.rm = FALSE){
+    return(max(object@imageMatrix, na.rm = na.rm))
 }
 
 #' Title

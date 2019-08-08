@@ -42,7 +42,7 @@ affineRescale <- function(img){
     a <- max(img) - min(img)
     b <- min(img) / a
     
-    return(affineGreyscaleTransformation(img = img, a, b))
+    return(affineGreyscaleTransformation(img = img, 1.0/a, -b))
 }
 
 #' Title
@@ -58,10 +58,10 @@ affineRescale <- function(img){
 #' @examples
 logarithmicDynamicCompression <- function(img, c = NULL){
     if(is.null(c)){
-        c <- 1 / log(1 + max(img@imageMatrix))
+        c <- 1 / log1p(max(img@imageMatrix))
     }
     
-    return(new("imageOneChannel", imageMatrix = c * log(1 + img@imageMatrix)))
+    return(new("imageOneChannel", imageMatrix = c * log1p(img@imageMatrix)))
 }
 
 #' Title
