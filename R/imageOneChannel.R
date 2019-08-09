@@ -88,34 +88,37 @@ writePNG.imageOneChannel <- function(object, target){
 
 #' Title
 #' 
+#' @export
+#' 
 #' @import data.table
 #'
 #' @param img 
 #' @param log.scale 
+#' 
+#' @references \insertRef{Weickert2019}{Raspository} 
 #'
 #' @return
-#' @export
+#' 
 #'
 #' @examples
 calculateFourierSpectrum <- function(img, log.scale = TRUE, shift = TRUE){
     
     if(shift){
         
+        ## generate checkerboard sign imageMatrix to shift it in the fourier domain
         DT <- CJ(1:nrow(img@imageMatrix), 1:ncol(img@imageMatrix))
-    
         DT[, sign := (-1)^(V1 + V2)]
         shiftMatrix <- new("imageOneChannel", imageMatrix = as.matrix(dcast(DT, V1 ~ V2, value.var = "sign")[,-1]))
         
         shiftedImg <- img * shiftMatrix
-        
         imgFTrans <- fft(shiftedImg@imageMatrix)
     }else{
         imgFTrans <- fft(img@imageMatrix)
     }
     
-    ## calculate the complex norm
+    ## calculate the eiclidean norm
     fourierSpectrum <- new("imageOneChannel", 
-                           imageMatrix = sqrt(Re(Conj(imgFTrans) * imgFTrans)))
+                           imageMatrix = sqrt(Re(imgFTrans)^2 + Im(imgFTrans)^2))
     
     ## perform logarithmic rescaling
     if(log.scale){

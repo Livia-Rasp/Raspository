@@ -11,6 +11,12 @@ calculateFourierSpectrum(img, log.scale = TRUE, shift = TRUE)
 
 \item{log.scale}{}
 }
+\value{
+
+}
 \description{
 Title
+}
+\references{
+\insertRef{Weickert2019}{Raspository}
 }
