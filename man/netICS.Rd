@@ -4,8 +4,13 @@
 \alias{netICS}
 \title{netICS}
 \usage{
-netICS(adjacencyMatrix, networkGenes, mutationData, diffExpGenes,
-  restartProbability = 0.4)
+netICS(
+  adjacencyMatrix,
+  networkGenes,
+  mutationData,
+  diffExpGenes,
+  restartProbability = 0.4
+)
 }
 \arguments{
 \item{restartProbability}{}

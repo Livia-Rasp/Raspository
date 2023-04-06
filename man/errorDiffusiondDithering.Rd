@@ -4,8 +4,11 @@
 \alias{errorDiffusiondDithering}
 \title{Title}
 \usage{
-errorDiffusiondDithering(img, transformPaletteFunction = round,
-  method = c("FS", "mae"))
+errorDiffusiondDithering(
+  img,
+  transformPaletteFunction = round,
+  method = c("FS", "mae")
+)
 }
 \arguments{
 \item{method}{}

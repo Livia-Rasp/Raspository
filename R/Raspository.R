@@ -1,6 +1,6 @@
 #' Raspository-package
 #' 
-#' @author David Rasp
+#' @author Livia Rasp
 #' 
 #' @docType package
 #' 

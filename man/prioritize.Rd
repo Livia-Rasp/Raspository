@@ -4,8 +4,14 @@
 \alias{prioritize}
 \title{prioritize}
 \usage{
-prioritize(connectivity, connectivityBackward, networkGenes, mutationData,
-  mutationInNetwork, diffExpInNetwork)
+prioritize(
+  connectivity,
+  connectivityBackward,
+  networkGenes,
+  mutationData,
+  mutationInNetwork,
+  diffExpInNetwork
+)
 }
 \arguments{
 \item{diffExpInNetwork}{}

@@ -4,8 +4,7 @@
 \alias{calculateCooccurrence}
 \title{Calculate Coocurence}
 \usage{
-calculateCooccurrence(imageOneChannel, direction = c(1, 1),
-  greyvalues = 256)
+calculateCooccurrence(imageOneChannel, direction = c(1, 1), greyvalues = 256)
 }
 \arguments{
 \item{imageOneChannel}{An image of class 
